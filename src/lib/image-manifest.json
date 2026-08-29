@@ -1,0 +1,789 @@
+{
+ "generated": "2026-08-29T20:35:49.739Z",
+ "heroImageId": "hero",
+ "ogImageId": "hero",
+ "images": [
+  {
+   "id": "stay-hero",
+   "src": "/images/apartment/stay-hero.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAE/8QAHxAAAgICAgMBAAAAAAAAAAAAAQIDEQAEBSETMXFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8AbUqCV6sEk3+XmHl9poeL2XhcK61TD2Oxh/E7E0mpvyNK5cMQGvsfMkaSY+LYleeN1FpIbH3JQ3//2Q==",
+   "category": "apartment",
+   "section": "stay-hero",
+   "alt": {
+    "en": "The open living area of the apartment, with the dining table under the window onto the old town",
+    "it": "La zona giorno dell'appartamento, con il tavolo sotto la finestra sul centro storico"
+   },
+   "credit": null,
+   "focus": {
+    "x": 50,
+    "y": 45
+   }
+  },
+  {
+   "id": "living-01",
+   "src": "/images/apartment/living-01.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAE/8QAHxAAAgICAgMBAAAAAAAAAAAAAQIDEQAEBSETMXFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8AbUqCV6sEk3+XmHl9poeL2XhcK61TD2Oxh/E7E0mpvyNK5cMQGvsfMkaSY+LYleeN1FpIbH3JQ3//2Q==",
+   "category": "apartment",
+   "section": "living",
+   "alt": {
+    "en": "Living and dining area with a pale wood table, four chairs and a tall mirror",
+    "it": "Zona giorno e pranzo con tavolo in legno chiaro, quattro sedie e uno specchio alto"
+   },
+   "credit": null
+  },
+  {
+   "id": "living-03",
+   "src": "/images/apartment/living-03.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMF/8QAHhAAAgICAwEBAAAAAAAAAAAAAQMCEQAEEiExUQX/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABgRAQEAAwAAAAAAAAAAAAAAABEAARIh/9oADAMBAAIRAxEAPwBSlkicudUBUfv3ILdF2w1Pdqq/KN5o6mqucAyfKR4+X0LOC/UQvTSx+vHgwj0ZOphleX//2Q==",
+   "category": "apartment",
+   "section": "living",
+   "alt": {
+    "en": "The living room window, with light coming through a yellow and grey curtain",
+    "it": "La finestra del soggiorno, con la luce che filtra da una tenda gialla e grigia"
+   },
+   "credit": null
+  },
+  {
+   "id": "sleep-01",
+   "src": "/images/apartment/sleep-01.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUG/8QAIhAAAgEEAgEFAAAAAAAAAAAAAQIDAAQRMRITISIjQXGB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABkRAAIDAQAAAAAAAAAAAAAAAAASAQIhEf/aAAwDAQACEQMRAD8A0NvLHyKhhkbwdUK6tYJbuB515MEdlDZ2MY8ftBm9iIyxkhx853VSzHbZdknqdhs7H1QrHcEy6f/Z",
+   "category": "apartment",
+   "section": "sleep",
+   "alt": {
+    "en": "The double bedroom, made up in white, with a red curtain at the window",
+    "it": "La camera matrimoniale, rifatta in bianco, con una tenda rossa alla finestra"
+   },
+   "credit": null
+  },
+  {
+   "id": "sleep-02",
+   "src": "/images/apartment/sleep-02.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAID/8QAHBAAAgIDAQEAAAAAAAAAAAAAAQIDEQAEEkEh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAXEQADAQAAAAAAAAAAAAAAAAAAAQIx/9oADAMBAAIRAxEAPwB6xySbIKRdpyejdUfMXGjKnLJzZvNYpDFEEUCgPcjYlYAN8sA5JwtGqP/Z",
+   "category": "apartment",
+   "section": "sleep",
+   "alt": {
+    "en": "The double bed and fitted wardrobe in the bedroom",
+    "it": "Il letto matrimoniale e l'armadio a muro in camera"
+   },
+   "credit": null
+  },
+  {
+   "id": "kitchen-01",
+   "src": "/images/apartment/kitchen-01.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAX/xAAfEAACAgICAwEAAAAAAAAAAAABAgMRAAQSEwUhMYH/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AVseT6d1opVlkoKV4JdAj3f7i4dxNhJetZEKfeS1in0YXNgMhr6rVk+LXTVhmMZY9r23I37wE/9k=",
+   "category": "apartment",
+   "section": "kitchen",
+   "alt": {
+    "en": "The kitchen along one wall of the living area, with oven, hob and dark splashback",
+    "it": "La cucina lungo una parete della zona giorno, con forno, piano cottura e paraschizzi scuro"
+   },
+   "credit": null,
+   "focus": {
+    "x": 55,
+    "y": 45
+   }
+  },
+  {
+   "id": "living-02",
+   "src": "/images/apartment/living-02.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAMF/8QAIBAAAgIBAwUAAAAAAAAAAAAAAQIDEQAEEiEUMUFRcf/EABUBAQEAAAAAAAAAAAAAAAAAAAID/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQBB/9oADAMBAAIRAxEAPwBck8cGkllYhnSrCi+fmVZUl08UvYOAxsVQwmj3OWdnbcX5PvNOaAdKzl3JUeTkwya7f//Z",
+   "category": "apartment",
+   "section": "details",
+   "alt": {
+    "en": "A chest of drawers below a painting in the living area",
+    "it": "Un cassettone sotto un quadro nella zona giorno"
+   },
+   "credit": null
+  },
+  {
+   "id": "bathroom-01",
+   "src": "/images/apartment/bathroom-01.jpg",
+   "width": 1280,
+   "height": 959,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABsQAQADAQADAAAAAAAAAAAAAAEAAhEhEjFB/8QAFAEBAAAAAAAAAAAAAAAAAAAAA//EABURAQEAAAAAAAAAAAAAAAAAABEA/9oADAMBAAIRAxEAPwDVdQD2wxqW3DOZF4FMxcWoj9lXCt7lQBTgQgkb/9k=",
+   "category": "apartment",
+   "section": "details",
+   "alt": {
+    "en": "The bathroom, with a basin, a shower cubicle and pale tiling",
+    "it": "Il bagno, con lavabo, box doccia e piastrelle chiare"
+   },
+   "credit": null
+  },
+  {
+   "id": "hero",
+   "src": "/images/lovere/hero.jpg",
+   "width": 2400,
+   "height": 1739,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAAF/8QAHxAAAgIBBAMAAAAAAAAAAAAAAQIDEQAEISMxQVGx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAYEQACAwAAAAAAAAAAAAAAAAAAEQECMf/aAAwDAQACEQMRAD8AotW9b9DoMpxEWvEUvIkZAFkC+vd5mBSJ1UyOb8k4uGBFnAskKu1/MVZstJuHh//Z",
+   "category": "lovere",
+   "section": "hero",
+   "alt": {
+    "en": "Lovere's harbour at first light, boats moored along the quay with the mountains of Lake Iseo behind",
+    "it": "Il porto di Lovere alle prime luci, le barche ormeggiate e le montagne del Lago d'Iseo alle spalle"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Riva_di_Mattina_1.jpg"
+   },
+   "focus": {
+    "x": 50,
+    "y": 55
+   }
+  },
+  {
+   "id": "closing",
+   "src": "/images/lovere/closing.jpg",
+   "width": 2400,
+   "height": 1675,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABQP/xAAeEAEBAAICAwEBAAAAAAAAAAABAgMRACEEBRJxof/EABQBAQAAAAAAAAAAAAAAAAAAAAL/xAAYEQEBAAMAAAAAAAAAAAAAAAABABEhYf/aAAwDAQACEQMRAD8AnizxUVUoTGtr0p+cR8f2rMQ5J+hOtjvXA/Xdxkl7H5P68U8LFFEFGwAN8GVNxOX/2Q==",
+   "category": "lovere",
+   "section": "closing",
+   "alt": {
+    "en": "The Lovere waterfront in morning light, the town rising behind the trees along the lake",
+    "it": "Il lungolago di Lovere nella luce del mattino, il paese che sale dietro gli alberi"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Riva_di_Mattina_2.jpg"
+   },
+   "focus": {
+    "x": 50,
+    "y": 50
+   }
+  },
+  {
+   "id": "lovere-hero",
+   "src": "/images/lovere/lovere-hero.jpg",
+   "width": 2400,
+   "height": 1658,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAwT/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABBEFEkETIiNhYv/EABUBAQEAAAAAAAAAAAAAAAAAAAID/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAEhAhH/2gAMAwEAAhEDEQA/AHtLm2eEOqS4xzGaSTWLaJfHaux+u0VDau08UfVO7aoYcYOKrjcyjEmGHtRUtatGl1Q//9k=",
+   "category": "lake",
+   "section": "lovere-hero",
+   "alt": {
+    "en": "Sunrise over Lake Iseo, a small boat on still water beneath the mountains",
+    "it": "Alba sul Lago d'Iseo, una piccola barca sull'acqua ferma sotto le montagne"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Lago_d%27Iseo_di_Mattina_1.jpg"
+   },
+   "focus": {
+    "x": 50,
+    "y": 50
+   }
+  },
+  {
+   "id": "lovere-water",
+   "src": "/images/lovere/lovere-water.jpg",
+   "width": 2400,
+   "height": 1800,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgQG/8QAHxAAAQMDBQAAAAAAAAAAAAAAAQACAwQFIRESQVFh/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwC2G98GB+ic1824ZTuI9ws/FM/tN07yRlIr/9k=",
+   "category": "lake",
+   "section": "lovere-water",
+   "alt": {
+    "en": "Lake Iseo under soft cloud, the far shore fading into haze",
+    "it": "Il Lago d'Iseo sotto nuvole basse, la sponda opposta che sfuma nella foschia"
+   },
+   "credit": {
+    "author": "xhoni_bg_dr",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_vista_lago_-_panoramio.jpg"
+   }
+  },
+  {
+   "id": "lovere-streets",
+   "src": "/images/lovere/lovere-streets.jpg",
+   "width": 2400,
+   "height": 3200,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAVABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EACMQAAICAgAFBQAAAAAAAAAAAAECAxEABAUSIWGBEyIxQcH/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwByGNthZCPcpZh5NfmN43MsR0bFlh08HMTS3JJKDLQC/N97y3iGwdhIrCyegtg3R74Qp4NJYkBDt9XjiiAdFAPKRfbDDIv/2Q==",
+   "category": "lovere",
+   "section": "lovere-streets",
+   "alt": {
+    "en": "A narrow stone street in Lovere's medieval centre, balconies overhead",
+    "it": "Un vicolo di pietra nel centro medievale di Lovere, con i balconi sopra"
+   },
+   "credit": {
+    "author": "Lauramagri712",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BG_Lovere_torre_Socha_da_via_Gramsci.jpg"
+   }
+  },
+  {
+   "id": "discover-old-town",
+   "src": "/images/lovere/discover-old-town.jpg",
+   "width": 2400,
+   "height": 3200,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAVABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEAv/EACEQAAIBAwQDAQAAAAAAAAAAAAECAwAEERITIUExUWEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwL/xAAYEQADAQEAAAAAAAAAAAAAAAAAARMiEf/aAAwDAQACEQMRAD8A1YQiS8UMAQAThvFKutFq0jOcIp4x38FV/ksu9u7gYqpyhXGBxyaiuzrvI5SVmGsAY8KCPXv7SW22iJ54yG3uJ0UyJKVJHVJju3GqXAy/XrFFFCIf/9k=",
+   "category": "lovere",
+   "section": "discover-old-town",
+   "alt": {
+    "en": "The Torre Civica seen from Piazza Vittorio Emanuele II in the old town of Lovere",
+    "it": "La Torre Civica vista da piazza Vittorio Emanuele II, nel centro storico di Lovere"
+   },
+   "credit": {
+    "author": "Lauramagri712",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:BG_Lovere_torre_Civica_da_piazza_V.Emanuele.jpg"
+   },
+   "focus": {
+    "x": 50,
+    "y": 40
+   }
+  },
+  {
+   "id": "discover-lake",
+   "src": "/images/lovere/discover-lake.jpg",
+   "width": 2400,
+   "height": 1799,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECA//EAB4QAAIBBAMBAAAAAAAAAAAAAAECAAMREiEEImGS/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABgRAAIDAAAAAAAAAAAAAAAAAAECABEx/9oADAMBAAIRAxEAPwAXNlo3KjI63aMNVW4R39x2LTJeLTVQAX+jJYYOqqzgFN9zAqvewkisn//Z",
+   "category": "lovere",
+   "section": "discover-lake",
+   "alt": {
+    "en": "Lovere's lakefront with moored boats, the church spire and the wooded slopes above the town",
+    "it": "Il lungolago di Lovere con le barche ormeggiate, il campanile e i versanti boscosi sopra il paese"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Riva_di_Mattina_3.jpg"
+   }
+  },
+  {
+   "id": "discover-art",
+   "src": "/images/lovere/discover-art.jpg",
+   "width": 1199,
+   "height": 1600,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAVABADASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMBAgQF/8QAIxAAAgEDAwQDAAAAAAAAAAAAAQIDAAQREiExBSJBkVFhcf/EABUBAQEAAAAAAAAAAAAAAAAAAAID/8QAGREBAAIDAAAAAAAAAAAAAAAAAAESITFB/9oADAMBAAIRAxEAPwBtkI1d1XcK2VI8iovEV50UjALDUfrx7OKX08SR34SNh3JkgjPwTWi7cmWUuRqA18Y2ByKnXJ2ce0LS3ALMdgeOfdXuHeOeRFY6RnH5RRVJ0HX/2Q==",
+   "category": "lovere",
+   "section": "discover-art",
+   "alt": {
+    "en": "Inside the Basilica di Santa Maria in Valvendra, looking down the nave to the apse",
+    "it": "L'interno della Basilica di Santa Maria in Valvendra, verso l'abside"
+   },
+   "credit": {
+    "author": "MikyMaf",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Basilica_di_Santa_Maria_in_Valvendra_Interno.jpg"
+   }
+  },
+  {
+   "id": "discover-food",
+   "src": "/images/lovere/discover-food.jpg",
+   "width": 2400,
+   "height": 1600,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAwX/xAAgEAACAQMEAwAAAAAAAAAAAAABAgMABCEFERIxEyJR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwBtLsraSOOYlRKZGDjfCkE9D5ipWq2sj3EkgYFuTHgM7bmokc80YJjldCe+LEUyO5tvIWYvn2JzUH//2Q==",
+   "category": "lake",
+   "section": "discover-food",
+   "alt": {
+    "en": "A terrace above Lake Iseo, geraniums on the railing and the water beyond",
+    "it": "Una terrazza sul Lago d'Iseo, gerani sulla ringhiera e l'acqua oltre"
+   },
+   "credit": {
+    "author": "Sailko",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lago_di_iseo_visto_da_montisola_02.jpg"
+   }
+  },
+  {
+   "id": "discover-outdoors",
+   "src": "/images/lovere/discover-outdoors.jpg",
+   "width": 1024,
+   "height": 682,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQEC/8QAHRAAAgIDAAMAAAAAAAAAAAAAAQMCEQAEIRJBYf/EABUBAQEAAAAAAAAAAAAAAAAAAAED/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAESE//aAAwDAQACEQMRAD8A3rtQw0YkGr53LsN1kxsk395haJSc4lkiTz3WJu00eEyV2RG7JJx3ZOEf/9k=",
+   "category": "lake",
+   "section": "discover-outdoors",
+   "alt": {
+    "en": "Lake Iseo from the hills, the Corna Trentapassi rising from the far shore",
+    "it": "Il Lago d'Iseo dalle colline, con la Corna Trentapassi che si alza sulla sponda opposta"
+   },
+   "credit": {
+    "author": "Luca Giarelli",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lago_d%27Iseo_e_Corna_Trentapassi_(Foto_Luca_Giarelli).jpg"
+   }
+  },
+  {
+   "id": "exp-morning",
+   "src": "/images/lovere/exp-morning.jpg",
+   "width": 2400,
+   "height": 1800,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwQF/8QAIhAAAgECBQUAAAAAAAAAAAAAAQIDABEEBRIiURMhMUHB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKMDmcLhupEYipNthcEci1I2fYRFNhKx4CBftZCSOltJI9dqQzs21wrg+dSg0F//2Q==",
+   "category": "lovere",
+   "section": "exp-morning",
+   "alt": {
+    "en": "The lakeside promenade in Lovere, empty and quiet along the water",
+    "it": "Il lungolago di Lovere, silenzioso lungo l'acqua"
+   },
+   "credit": {
+    "author": "Rmpbedford",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere,_Italy_(30585).jpg"
+   }
+  },
+  {
+   "id": "exp-sunset",
+   "src": "/images/lovere/exp-sunset.jpg",
+   "width": 2400,
+   "height": 1657,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAQT/xAAgEAABAwQCAwAAAAAAAAAAAAABAAIDBBESIQUyUXGR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAXEQADAQAAAAAAAAAAAAAAAAAAAREx/9oADAMBAAIRAxEAPwBfyjyMYYcBa+Ttm3pEfLEtAkizPkaPxQVbQCSBu6KfqE6ZNFMP/9k=",
+   "category": "lake",
+   "section": "exp-sunset",
+   "alt": {
+    "en": "Last light on the mountains across Lake Iseo, the water gone deep blue",
+    "it": "Ultima luce sulle montagne di fronte al Lago d'Iseo, l'acqua ormai blu profondo"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Lago_d%27Iseo_di_Sera_2.jpg"
+   }
+  },
+  {
+   "id": "exp-monteisola",
+   "src": "/images/lovere/exp-monteisola.jpg",
+   "width": 2400,
+   "height": 1600,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAgMEBf/EAB8QAAICAQQDAAAAAAAAAAAAAAECAAMRBAUTUSEyQf/EABQBAQAAAAAAAAAAAAAAAAAAAAL/xAAVEQEBAAAAAAAAAAAAAAAAAAABAP/aAAwDAQACEQMRAD8Ap0e4ctWbq8MPqnwYxtyC+tAOO2mDyMoABxDDt2YlYF//2Q==",
+   "category": "lake",
+   "section": "exp-monteisola",
+   "alt": {
+    "en": "Lake Iseo seen from Monte Isola, the shoreline villages strung along the water",
+    "it": "Il Lago d'Iseo visto da Monte Isola, i paesi allineati lungo la riva"
+   },
+   "credit": {
+    "author": "Sailko",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lago_di_iseo_visto_da_montisola_01.jpg"
+   }
+  },
+  {
+   "id": "day-morning",
+   "src": "/images/lovere/day-morning.jpg",
+   "width": 2400,
+   "height": 1800,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EACIQAAICAAQHAAAAAAAAAAAAAAECAAMFERIhEzEyQUJScf/EABQBAQAAAAAAAAAAAAAAAAAAAAL/xAAWEQADAAAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhEDEQA/ALbcStA8E+gxFmIOF66c/YgzPa1+Ej6jqOx3gtthqdi5OQ5doVQnJ//Z",
+   "category": "lovere",
+   "section": "day-morning",
+   "alt": {
+    "en": "Rooftops in Lovere with the lake and snow on the mountains beyond",
+    "it": "I tetti di Lovere con il lago e la neve sulle montagne oltre"
+   },
+   "credit": {
+    "author": "Rmpbedford",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere,_Italy_(45069).jpg"
+   }
+  },
+  {
+   "id": "day-aperitivo",
+   "src": "/images/lovere/day-aperitivo.jpg",
+   "width": 2400,
+   "height": 1720,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAwT/xAAiEAACAQMCBwAAAAAAAAAAAAABAgMABBEFEiEjMTJBUWH/xAAVAQEBAAAAAAAAAAAAAAAAAAACBP/EABkRAAMAAwAAAAAAAAAAAAAAAAABEhEhIv/aAAwDAQACEQMRAD8Aax1NJ04wPkeVGRTy6osPZbkn2xAoEYxIqR4VcdAKoj5o2yBWH0CpqVbQ8cn/2Q==",
+   "category": "lake",
+   "section": "day-aperitivo",
+   "alt": {
+    "en": "Golden light across Lake Iseo, the shore reflected in flat water",
+    "it": "Luce dorata sul Lago d'Iseo, la riva riflessa nell'acqua ferma"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Lago_d%27Iseo_di_Mattina_3.jpg"
+   }
+  },
+  {
+   "id": "day-night",
+   "src": "/images/lovere/day-night.jpg",
+   "width": 2400,
+   "height": 1577,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAC/8QAHxAAAQQBBQEAAAAAAAAAAAAAEQABAgMhBBIUMUGR/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABYRAAMAAAAAAAAAAAAAAAAAAAABEv/aAAwDAQACEQMRAD8AI5NngCpamwsHj8R8JOAcLb2S2tntO2CUf//Z",
+   "category": "lovere",
+   "section": "day-night",
+   "alt": {
+    "en": "Lovere and the northern end of Lake Iseo after dark, the town lights along the shore",
+    "it": "Lovere e l'alto Lago d'Iseo dopo il tramonto, le luci del paese lungo la riva"
+   },
+   "credit": {
+    "author": "Maurizio Moro5153",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_sera.jpg"
+   }
+  },
+  {
+   "id": "your-stay",
+   "src": "/images/lovere/your-stay.jpg",
+   "width": 2400,
+   "height": 1799,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECA//EAB4QAAIBBAMBAAAAAAAAAAAAAAECAAMREiEEImGS/8QAFAEBAAAAAAAAAAAAAAAAAAAAAv/EABgRAAIDAAAAAAAAAAAAAAAAAAECABEx/9oADAMBAAIRAxEAPwAXNlo3KjI63aMNVW4R39x2LTJeLTVQAX+jJYYOqqzgFN9zAqvewkisn//Z",
+   "category": "lovere",
+   "section": "yourStay",
+   "alt": {
+    "en": "The walk down from the old town to the water, two minutes from the door",
+    "it": "La discesa dal centro storico all'acqua, a due minuti dalla porta"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Riva_di_Mattina_3.jpg"
+   }
+  },
+  {
+   "id": "gallery-tower",
+   "src": "/images/lovere/gallery-tower.jpg",
+   "width": 2400,
+   "height": 3600,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAYABADASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAQL/xAAiEAACAgIBAwUAAAAAAAAAAAABAgMRAAQxEiFBIjJSgcH/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/8QAGREAAgMBAAAAAAAAAAAAAAAAAAECAxEh/9oADAMBAAIRAxEAPwCsEQxwpFIroBVqwNisV3ISNWfpPqK0v32/cW1dxkR6Rwx4IVRfJzrb3nMBFSvfhQBRwxtePROtcJsmxGhIDXJ8FF3mCRm99hz4qsMMDGj/2Q==",
+   "category": "lovere",
+   "section": "gallery",
+   "alt": {
+    "en": "The Torre Civica above the cobbles of the old town square",
+    "it": "La Torre Civica sopra il selciato della piazza del borgo"
+   },
+   "credit": {
+    "author": "Mauriz-79",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_Torre_Civica_di_Lovere.jpg"
+   }
+  },
+  {
+   "id": "gallery-tower-window",
+   "src": "/images/lovere/gallery-tower-window.jpg",
+   "width": 2400,
+   "height": 1800,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgMF/8QAIBAAAQQBBAMAAAAAAAAAAAAAAQIDBBEABRIhMRNBUf/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/AMfRYjLwU7Ia8rbYFpurs1h1NiM3MfEVNMgjaD64yMKU4xHKEbSlZ5sX11gccUtSia5+ZJj/2Q==",
+   "category": "lovere",
+   "section": "gallery",
+   "alt": {
+    "en": "Lake Iseo framed by a window in the Torre Civica",
+    "it": "Il Lago d'Iseo inquadrato da una finestra della Torre Civica"
+   },
+   "credit": {
+    "author": "CASTRUMCAPELLEONLUS",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Il_lago_d%27Iseo_dal_finestrino_della_torre.jpg"
+   }
+  },
+  {
+   "id": "gallery-basilica",
+   "src": "/images/lovere/gallery-basilica.jpg",
+   "width": 1600,
+   "height": 1200,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAABP/EACIQAAIABQUAAwAAAAAAAAAAAAECAAMEBRESITEyQSJi0f/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AEG9TmpVRQi1B7Mh6/Xf2F2y9MWWTUHVnPzPI24gKWSlY9po92YfkNl2OkUA5m5PusxNI//Z",
+   "category": "lovere",
+   "section": "gallery",
+   "alt": {
+    "en": "The facade of the Basilica di Santa Maria in Valvendra, Lovere",
+    "it": "La facciata della Basilica di Santa Maria in Valvendra, a Lovere"
+   },
+   "credit": {
+    "author": "MikyMaf",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Basilica_di_Santa_Maria_in_Valvendra_Facciata.jpg"
+   }
+  },
+  {
+   "id": "gallery-palazzo",
+   "src": "/images/lovere/gallery-palazzo.jpg",
+   "width": 2400,
+   "height": 1800,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAwX/xAAfEAEAAgEFAAMAAAAAAAAAAAABAgMRAAQSITFhgdH/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwClHexnUcGdY9LL36/dBC2QT4WWVkZJhlk9+dQHcWmAm4NE7y1XkksveT3RdMf/2Q==",
+   "category": "lovere",
+   "section": "gallery",
+   "alt": {
+    "en": "A long neoclassical palazzo with an arcaded front on Lovere's lakefront road",
+    "it": "Un lungo palazzo neoclassico con portico sulla strada del lungolago di Lovere"
+   },
+   "credit": {
+    "author": "Rmpbedford",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere,_Italy_(39219).jpg"
+   }
+  },
+  {
+   "id": "gallery-lakeside-trees",
+   "src": "/images/lovere/gallery-lakeside-trees.jpg",
+   "width": 2400,
+   "height": 1800,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwEE/8QAHxAAAQMEAwEAAAAAAAAAAAAAAQIDEQAEEjEjUpHw/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAVEQEBAAAAAAAAAAAAAAAAAAAAIf/aAAwDAQACEQMRAD8AxMsthphu4TlBORChMb39uluGLVVwShlRSUmElwCNUQx6J8qykTxo8qQf/9k=",
+   "category": "lovere",
+   "section": "gallery",
+   "alt": {
+    "en": "Benches and bare trees along the lake at Lovere, sun low behind the branches",
+    "it": "Panchine e alberi spogli lungo il lago a Lovere, il sole basso dietro i rami"
+   },
+   "credit": {
+    "author": "Rmpbedford",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere,_Italy_(36571).jpg"
+   }
+  },
+  {
+   "id": "gallery-panorama",
+   "src": "/images/lovere/gallery-panorama.jpg",
+   "width": 2400,
+   "height": 1291,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAJABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgQF/8QAHxAAAQMEAwEAAAAAAAAAAAAAAQACAwQRMmETIXGB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwDNZWSEX5OtFGSpeLkykX2omYjxA5fEUP/Z",
+   "category": "lovere",
+   "section": "gallery",
+   "alt": {
+    "en": "Lovere and the head of Lake Iseo from the hills above the town",
+    "it": "Lovere e l'alto Lago d'Iseo dalle colline sopra il paese"
+   },
+   "credit": {
+    "author": "Maurizio Moro5153",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Giorno.jpg"
+   }
+  },
+  {
+   "id": "gallery-from-ceratello",
+   "src": "/images/lovere/gallery-from-ceratello.jpg",
+   "width": 1024,
+   "height": 683,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAQIDBP/EAB8QAAIBBAIDAAAAAAAAAAAAAAECAwAEEkEFIRETYv/EABQBAQAAAAAAAAAAAAAAAAAAAAL/xAAaEQACAgMAAAAAAAAAAAAAAAAAAwECETFR/9oADAMBAAIRAxEAPwANyN46HKCJfoCkknZkyMaKd7rKJHKdtqq249pbPvwBujZ+NBhfT//Z",
+   "category": "lake",
+   "section": "gallery",
+   "alt": {
+    "en": "Lake Iseo and Lovere seen from Ceratello, high on the western slope",
+    "it": "Il Lago d'Iseo e Lovere visti da Ceratello, in alto sul versante occidentale"
+   },
+   "credit": {
+    "author": "Vid Pogacnik",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lake_Iseo_and_Lovere_from_Ceratello.jpg"
+   }
+  },
+  {
+   "id": "gallery-island",
+   "src": "/images/lovere/gallery-island.jpg",
+   "width": 2400,
+   "height": 1673,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAIF/8QAIRAAAgEDBAMBAAAAAAAAAAAAAQIDABESBAUhMRMiUWL/xAAUAQEAAAAAAAAAAAAAAAAAAAAD/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEhMf/aAAwDAQACEQMRAD8AQ2+K4tJDHl+X4oz7gjaaR1hbyA4riOLnqr1DGD1iCoB8UVnTOzRMhNlDBgALWN++KVVSAZp//9k=",
+   "category": "lake",
+   "section": "gallery",
+   "alt": {
+    "en": "An island on Lake Iseo at dawn, the mountain rising straight from the water behind it",
+    "it": "Un'isola sul Lago d'Iseo all'alba, la montagna che sale dritta dall'acqua alle spalle"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Lago_d%27Iseo_di_Mattina_5.jpg"
+   }
+  },
+  {
+   "id": "gallery-rower",
+   "src": "/images/lovere/gallery-rower.jpg",
+   "width": 2400,
+   "height": 1725,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EACIQAAIBAwIHAAAAAAAAAAAAAAECAwAEEQUTEiEiMUFikf/EABQBAQAAAAAAAAAAAAAAAAAAAAT/xAAZEQEAAgMAAAAAAAAAAAAAAAABABIRITH/2gAMAwEAAhEDEQA/ALl1S8nUDjVB6DB+0ra+miYLPmSI+TzK1ngCZRudWO1GxGFwEFOocCFs53P/2Q==",
+   "category": "lake",
+   "section": "gallery",
+   "alt": {
+    "en": "A single rowing boat crossing Lake Iseo below the mountains",
+    "it": "Una barca a remi attraversa il Lago d'Iseo sotto le montagne"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Lago_d%27Iseo_di_Mattina_7.jpg"
+   }
+  },
+  {
+   "id": "gallery-alpenglow",
+   "src": "/images/lovere/gallery-alpenglow.jpg",
+   "width": 2400,
+   "height": 1750,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAQIF/8QAHxABAAICAgIDAAAAAAAAAAAAAQIDABEFITEyBEFx/8QAFAEBAAAAAAAAAAAAAAAAAAAAA//EABgRAAMBAQAAAAAAAAAAAAAAAAABEQIh/9oADAMBAAIRAxEAPwAs5m2YFEY0RPLJ2uXVzCQT5AW9+0XTr8zFbpEE1HT16mFVjvwGn66x10CZSkP/2Q==",
+   "category": "lake",
+   "section": "gallery",
+   "alt": {
+    "en": "The last sun on a mountain face above Lake Iseo",
+    "it": "L'ultimo sole su una parete di montagna sopra il Lago d'Iseo"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Lago_d%27Iseo_di_Sera_3.jpg"
+   }
+  },
+  {
+   "id": "gallery-headland",
+   "src": "/images/lovere/gallery-headland.jpg",
+   "width": 2400,
+   "height": 1696,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAIF/8QAHxAAAQMFAAMAAAAAAAAAAAAAAQIDEQAEBRMhEiJB/8QAFAEBAAAAAAAAAAAAAAAAAAAABP/EABkRAQACAwAAAAAAAAAAAAAAAAEAAhEhIv/aAAwDAQACEQMRAD8ARcZNi1c1toDqwO+0AVnv5i5V3d4QZCWxFTkVFFwQmAI+AUFaiUkz2kVecw6A6n//2Q==",
+   "category": "lake",
+   "section": "gallery",
+   "alt": {
+    "en": "A wooded headland running down into Lake Iseo at dusk",
+    "it": "Un promontorio boscoso che scende nel Lago d'Iseo all'imbrunire"
+   },
+   "credit": {
+    "author": "Zairon",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_Lago_d%27Iseo_di_Sera_4.jpg"
+   }
+  },
+  {
+   "id": "gallery-mist",
+   "src": "/images/lovere/gallery-mist.jpg",
+   "width": 2400,
+   "height": 1800,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQME/8QAHBAAAgICAwAAAAAAAAAAAAAAAQIAAwUREiGR/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8ATszVVgA4lfJkvyNZXakkwdUUKpAA2JK9yq9QmF//2Q==",
+   "category": "lake",
+   "section": "gallery",
+   "alt": {
+    "en": "Mist across Lake Iseo, the mountains reduced to outlines",
+    "it": "Foschia sul Lago d'Iseo, le montagne ridotte a profili"
+   },
+   "credit": {
+    "author": "Andrzej Otrębski",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lovere_jezioro_2.jpg"
+   }
+  },
+  {
+   "id": "beyond-bogn",
+   "src": "/images/lovere/beyond-bogn.jpg",
+   "width": 2400,
+   "height": 1603,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAID/8QAGxABAAIDAQEAAAAAAAAAAAAAAQMRAAIhQYH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAA//EABkRAAIDAQAAAAAAAAAAAAAAAAACAQMxEf/aAAwDAQACEQMRAD8AVtNCApt1rhkSTRkTQm91yufcHJtsblLmkYNiWX7hrG5pFa1icP/Z",
+   "category": "lake",
+   "section": "beyond",
+   "alt": {
+    "en": "The Bögn di Zorzino at Riva di Solto — limestone cliffs dropping straight into the green water of Lake Iseo",
+    "it": "Il Bögn di Zorzino a Riva di Solto — le rocce calcaree che cadono a picco nell'acqua verde del Lago d'Iseo"
+   },
+   "credit": {
+    "author": "Fabio Pani",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:B%C3%B6gn_di_Zorzino,_Riva_di_Solto,_lake_Iseo,_Italy.jpg"
+   }
+  },
+  {
+   "id": "beyond-rockArt",
+   "src": "/images/lovere/beyond-rockArt.jpg",
+   "width": 1024,
+   "height": 682,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAEF/8QAHhAAAgICAgMAAAAAAAAAAAAAAQIAEQMEEiExQWH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAv/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwBuBgo7FD6ZNvYCL3QKiYTbedhxOQkHyKEHldnNsxY17NxFV//Z",
+   "category": "lovere",
+   "section": "beyond",
+   "alt": {
+    "en": "The “scene of the smith” cut into Rock 35 at the Naquane rock-art park, Capo di Ponte",
+    "it": "La «scena del fabbro» incisa sulla Roccia 35 nel parco di Naquane, Capo di Ponte"
+   },
+   "credit": {
+    "author": "Luca Giarelli",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Scena_del_fabbro_-_Parco_di_Naquane_R_35_-_Capo_di_Ponte_(Foto_Luca_Giarelli).jpg"
+   }
+  },
+  {
+   "id": "beyond-roman",
+   "src": "/images/lovere/beyond-roman.jpg",
+   "width": 1024,
+   "height": 682,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAgP/xAAfEAACAQQCAwAAAAAAAAAAAAABAwIABBFBBSEUImH/xAAVAQEBAAAAAAAAAAAAAAAAAAABA//EABcRAQADAAAAAAAAAAAAAAAAAAAREjH/2gAMAwEAAhEDEQA/ABG0vGR7mATo6ossZKjlrYRJ1LdJV284BYd1BI8rmyt/vDJ6Pyp2nC//2Q==",
+   "category": "lovere",
+   "section": "beyond",
+   "alt": {
+    "en": "The Roman amphitheatre at Cividate Camuno, excavated in the archaeological park of the Valle Camonica",
+    "it": "L'anfiteatro romano di Cividate Camuno, nel parco archeologico della Valle Camonica"
+   },
+   "credit": {
+    "author": "Luca Giarelli",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anfiteatro_romano_-_Cividate_Camuno_(Foto_Luca_Giarelli).jpg"
+   }
+  },
+  {
+   "id": "beyond-ski",
+   "src": "/images/lovere/beyond-ski.jpg",
+   "width": 1600,
+   "height": 1200,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgME/8QAHRABAQADAAIDAAAAAAAAAAAAAQIAAxEEEiJRkf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAwDAQACEQMRAD8Aeu7UB73H70Hyn8zPp8vbqkmUZ+ky9BcRSca6PMUf/9k=",
+   "category": "lovere",
+   "section": "beyond",
+   "alt": {
+    "en": "The Montecampione ski area under snow, its pistes and lifts above the Valle Camonica",
+    "it": "Il comprensorio di Montecampione sotto la neve, piste e impianti sopra la Valle Camonica"
+   },
+   "credit": {
+    "author": "Paolo Grossi",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Montecampione.JPG"
+   }
+  },
+  {
+   "id": "gallery-bogn-turquoise",
+   "src": "/images/lovere/gallery-bogn-turquoise.jpg",
+   "width": 2400,
+   "height": 3592,
+   "blurDataURL": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAYABADASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIDBAX/xAAiEAACAQQCAQUAAAAAAAAAAAABAgADBBExBSFhEiIjQVH/xAAWAQEBAQAAAAAAAAAAAAAAAAADAgT/xAAZEQADAAMAAAAAAAAAAAAAAAAAARECEiH/2gAMAwEAAhEDEQA/AE4e4D0jSYe4HPiX3ZRgEjJ0P2Z3HWq2iis7eosO1HUWqHaoXB2c58y92lDO8U3SBrv4gDjH0QI1K60oGz2cwhCgs4f/2Q==",
+   "category": "lake",
+   "section": "gallery",
+   "alt": {
+    "en": "Turquoise water under the white cliffs of the Bögn di Zorzino, Riva di Solto",
+    "it": "Acqua turchese sotto le rocce bianche del Bögn di Zorzino, a Riva di Solto"
+   },
+   "credit": {
+    "author": "Fabio Pani",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:High-angle_shot_of_B%C3%B6gn_di_Zorzino,_Riva_di_Solto,_lake_Iseo,_Italy.jpg"
+   }
+  }
+ ]
+}

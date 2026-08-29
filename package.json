@@ -1,0 +1,39 @@
+{
+  "name": "casa-piazzola-lovere",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Boutique holiday-rental site for a two-room apartment in the historic centre of Lovere, Lake Iseo.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:seed": "tsx --env-file-if-exists=.env prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "setup": "prisma generate && prisma db push && npm run db:seed",
+    "images": "node scripts/build-images.mjs",
+    "photos:fetch": "node scripts/fetch-photos.mjs",
+    "db:postgres": "node -e \"const f='prisma/schema.prisma',s=require('fs').readFileSync(f,'utf8');require('fs').writeFileSync(f,s.replace(/provider = \\\"sqlite\\\"/,'provider = \\\"postgresql\\\"'));console.log('schema.prisma now targets postgresql — set DATABASE_URL and run: npx prisma db push')\""
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.1",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^4.1.1",
+    "stripe": "^17.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "prisma": "^6.2.1",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

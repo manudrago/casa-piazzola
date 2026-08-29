@@ -1,0 +1,479 @@
+{
+  "_comment": "Which photograph goes where. Edit this file, run `npm run images`, and the site follows. `source` is the filename in the incoming folder; `section` is the slot a component asks for; `alt` is real alt text, written per language, never auto-generated.",
+  "heroImageId": "hero",
+  "ogImageId": "hero",
+  "apartment": [
+    {
+      "id": "stay-hero",
+      "source": "living-01.jpg",
+      "section": "stay-hero",
+      "focus": {
+        "x": 50,
+        "y": 45
+      },
+      "alt": {
+        "en": "The open living area of the apartment, with the dining table under the window onto the old town",
+        "it": "La zona giorno dell'appartamento, con il tavolo sotto la finestra sul centro storico"
+      }
+    },
+    {
+      "id": "living-01",
+      "source": "living-01.jpg",
+      "section": "living",
+      "alt": {
+        "en": "Living and dining area with a pale wood table, four chairs and a tall mirror",
+        "it": "Zona giorno e pranzo con tavolo in legno chiaro, quattro sedie e uno specchio alto"
+      }
+    },
+    {
+      "id": "living-03",
+      "source": "living-03.jpg",
+      "section": "living",
+      "alt": {
+        "en": "The living room window, with light coming through a yellow and grey curtain",
+        "it": "La finestra del soggiorno, con la luce che filtra da una tenda gialla e grigia"
+      }
+    },
+    {
+      "id": "sleep-01",
+      "source": "sleep-01.jpg",
+      "section": "sleep",
+      "alt": {
+        "en": "The double bedroom, made up in white, with a red curtain at the window",
+        "it": "La camera matrimoniale, rifatta in bianco, con una tenda rossa alla finestra"
+      }
+    },
+    {
+      "id": "sleep-02",
+      "source": "sleep-02.jpg",
+      "section": "sleep",
+      "alt": {
+        "en": "The double bed and fitted wardrobe in the bedroom",
+        "it": "Il letto matrimoniale e l'armadio a muro in camera"
+      }
+    },
+    {
+      "id": "kitchen-01",
+      "source": "kitchen-01.jpg",
+      "section": "kitchen",
+      "focus": {
+        "x": 55,
+        "y": 45
+      },
+      "alt": {
+        "en": "The kitchen along one wall of the living area, with oven, hob and dark splashback",
+        "it": "La cucina lungo una parete della zona giorno, con forno, piano cottura e paraschizzi scuro"
+      }
+    },
+    {
+      "id": "living-02",
+      "source": "living-02.jpg",
+      "section": "details",
+      "alt": {
+        "en": "A chest of drawers below a painting in the living area",
+        "it": "Un cassettone sotto un quadro nella zona giorno"
+      }
+    },
+    {
+      "id": "bathroom-01",
+      "source": "bathroom-01.jpg",
+      "section": "details",
+      "alt": {
+        "en": "The bathroom, with a basin, a shower cubicle and pale tiling",
+        "it": "Il bagno, con lavabo, box doccia e piastrelle chiare"
+      }
+    }
+  ],
+  "destination": [
+    {
+      "id": "hero",
+      "source": "lovere-riva-di-mattina-1.jpg",
+      "section": "hero",
+      "category": "lovere",
+      "focus": {
+        "x": 50,
+        "y": 55
+      },
+      "alt": {
+        "en": "Lovere's harbour at first light, boats moored along the quay with the mountains of Lake Iseo behind",
+        "it": "Il porto di Lovere alle prime luci, le barche ormeggiate e le montagne del Lago d'Iseo alle spalle"
+      },
+      "commons": "File:Lovere Riva di Mattina 1.jpg"
+    },
+    {
+      "id": "closing",
+      "source": "lovere-riva-di-mattina-2.jpg",
+      "section": "closing",
+      "category": "lovere",
+      "focus": {
+        "x": 50,
+        "y": 50
+      },
+      "alt": {
+        "en": "The Lovere waterfront in morning light, the town rising behind the trees along the lake",
+        "it": "Il lungolago di Lovere nella luce del mattino, il paese che sale dietro gli alberi"
+      },
+      "commons": "File:Lovere Riva di Mattina 2.jpg"
+    },
+    {
+      "id": "lovere-hero",
+      "source": "lovere-lago-d-iseo-di-mattina-1.jpg",
+      "section": "lovere-hero",
+      "category": "lake",
+      "focus": {
+        "x": 50,
+        "y": 50
+      },
+      "alt": {
+        "en": "Sunrise over Lake Iseo, a small boat on still water beneath the mountains",
+        "it": "Alba sul Lago d'Iseo, una piccola barca sull'acqua ferma sotto le montagne"
+      },
+      "commons": "File:Lovere Lago d'Iseo di Mattina 1.jpg"
+    },
+    {
+      "id": "lovere-water",
+      "source": "lovere-vista-lago-panoramio.jpg",
+      "section": "lovere-water",
+      "category": "lake",
+      "alt": {
+        "en": "Lake Iseo under soft cloud, the far shore fading into haze",
+        "it": "Il Lago d'Iseo sotto nuvole basse, la sponda opposta che sfuma nella foschia"
+      },
+      "commons": "File:Lovere vista lago - panoramio.jpg"
+    },
+    {
+      "id": "lovere-streets",
+      "source": "bg-lovere-torre-socha-da-via-gramsci.jpg",
+      "section": "lovere-streets",
+      "category": "lovere",
+      "alt": {
+        "en": "A narrow stone street in Lovere's medieval centre, balconies overhead",
+        "it": "Un vicolo di pietra nel centro medievale di Lovere, con i balconi sopra"
+      },
+      "commons": "File:BG Lovere torre Socha da via Gramsci.jpg"
+    },
+    {
+      "id": "discover-old-town",
+      "source": "bg-lovere-torre-civica-da-piazza-v-emanuele.jpg",
+      "section": "discover-old-town",
+      "category": "lovere",
+      "focus": {
+        "x": 50,
+        "y": 40
+      },
+      "alt": {
+        "en": "The Torre Civica seen from Piazza Vittorio Emanuele II in the old town of Lovere",
+        "it": "La Torre Civica vista da piazza Vittorio Emanuele II, nel centro storico di Lovere"
+      },
+      "commons": "File:BG Lovere torre Civica da piazza V.Emanuele.jpg"
+    },
+    {
+      "id": "discover-lake",
+      "source": "lovere-riva-di-mattina-3.jpg",
+      "section": "discover-lake",
+      "category": "lovere",
+      "alt": {
+        "en": "Lovere's lakefront with moored boats, the church spire and the wooded slopes above the town",
+        "it": "Il lungolago di Lovere con le barche ormeggiate, il campanile e i versanti boscosi sopra il paese"
+      },
+      "commons": "File:Lovere Riva di Mattina 3.jpg"
+    },
+    {
+      "id": "discover-art",
+      "source": "lovere-basilica-di-santa-maria-in-valvendra-interno.jpg",
+      "section": "discover-art",
+      "category": "lovere",
+      "alt": {
+        "en": "Inside the Basilica di Santa Maria in Valvendra, looking down the nave to the apse",
+        "it": "L'interno della Basilica di Santa Maria in Valvendra, verso l'abside"
+      },
+      "commons": "File:Lovere Basilica di Santa Maria in Valvendra Interno.jpg"
+    },
+    {
+      "id": "discover-food",
+      "source": "lago-di-iseo-visto-da-montisola-02.jpg",
+      "section": "discover-food",
+      "category": "lake",
+      "alt": {
+        "en": "A terrace above Lake Iseo, geraniums on the railing and the water beyond",
+        "it": "Una terrazza sul Lago d'Iseo, gerani sulla ringhiera e l'acqua oltre"
+      },
+      "commons": "File:Lago di iseo visto da montisola 02.jpg"
+    },
+    {
+      "id": "discover-outdoors",
+      "source": "lago-d-iseo-e-corna-trentapassi-foto-luca-giarelli.jpg",
+      "section": "discover-outdoors",
+      "category": "lake",
+      "alt": {
+        "en": "Lake Iseo from the hills, the Corna Trentapassi rising from the far shore",
+        "it": "Il Lago d'Iseo dalle colline, con la Corna Trentapassi che si alza sulla sponda opposta"
+      },
+      "commons": "File:Lago d'Iseo e Corna Trentapassi (Foto Luca Giarelli).jpg"
+    },
+    {
+      "id": "exp-morning",
+      "source": "lovere-italy-30585.jpg",
+      "section": "exp-morning",
+      "category": "lovere",
+      "alt": {
+        "en": "The lakeside promenade in Lovere, empty and quiet along the water",
+        "it": "Il lungolago di Lovere, silenzioso lungo l'acqua"
+      },
+      "commons": "File:Lovere, Italy (30585).jpg"
+    },
+    {
+      "id": "exp-sunset",
+      "source": "lovere-lago-d-iseo-di-sera-2.jpg",
+      "section": "exp-sunset",
+      "category": "lake",
+      "alt": {
+        "en": "Last light on the mountains across Lake Iseo, the water gone deep blue",
+        "it": "Ultima luce sulle montagne di fronte al Lago d'Iseo, l'acqua ormai blu profondo"
+      },
+      "commons": "File:Lovere Lago d'Iseo di Sera 2.jpg"
+    },
+    {
+      "id": "exp-monteisola",
+      "source": "lago-di-iseo-visto-da-montisola-01.jpg",
+      "section": "exp-monteisola",
+      "category": "lake",
+      "alt": {
+        "en": "Lake Iseo seen from Monte Isola, the shoreline villages strung along the water",
+        "it": "Il Lago d'Iseo visto da Monte Isola, i paesi allineati lungo la riva"
+      },
+      "commons": "File:Lago di iseo visto da montisola 01.jpg"
+    },
+    {
+      "id": "day-morning",
+      "source": "lovere-italy-45069.jpg",
+      "section": "day-morning",
+      "category": "lovere",
+      "alt": {
+        "en": "Rooftops in Lovere with the lake and snow on the mountains beyond",
+        "it": "I tetti di Lovere con il lago e la neve sulle montagne oltre"
+      },
+      "commons": "File:Lovere, Italy (45069).jpg"
+    },
+    {
+      "id": "day-aperitivo",
+      "source": "lovere-lago-d-iseo-di-mattina-3.jpg",
+      "section": "day-aperitivo",
+      "category": "lake",
+      "alt": {
+        "en": "Golden light across Lake Iseo, the shore reflected in flat water",
+        "it": "Luce dorata sul Lago d'Iseo, la riva riflessa nell'acqua ferma"
+      },
+      "commons": "File:Lovere Lago d'Iseo di Mattina 3.jpg"
+    },
+    {
+      "id": "day-night",
+      "source": "lovere-sera.jpg",
+      "section": "day-night",
+      "category": "lovere",
+      "alt": {
+        "en": "Lovere and the northern end of Lake Iseo after dark, the town lights along the shore",
+        "it": "Lovere e l'alto Lago d'Iseo dopo il tramonto, le luci del paese lungo la riva"
+      },
+      "commons": "File:Lovere sera.jpg"
+    },
+    {
+      "id": "your-stay",
+      "source": "lovere-riva-di-mattina-3.jpg",
+      "section": "yourStay",
+      "category": "lovere",
+      "alt": {
+        "en": "The walk down from the old town to the water, two minutes from the door",
+        "it": "La discesa dal centro storico all'acqua, a due minuti dalla porta"
+      },
+      "commons": "File:Lovere Riva di Mattina 3.jpg"
+    },
+    {
+      "id": "gallery-tower",
+      "source": "la-torre-civica-di-lovere.jpg",
+      "section": "gallery",
+      "category": "lovere",
+      "alt": {
+        "en": "The Torre Civica above the cobbles of the old town square",
+        "it": "La Torre Civica sopra il selciato della piazza del borgo"
+      },
+      "commons": "File:La Torre Civica di Lovere.jpg"
+    },
+    {
+      "id": "gallery-tower-window",
+      "source": "il-lago-d-iseo-dal-finestrino-della-torre.jpg",
+      "section": "gallery",
+      "category": "lovere",
+      "alt": {
+        "en": "Lake Iseo framed by a window in the Torre Civica",
+        "it": "Il Lago d'Iseo inquadrato da una finestra della Torre Civica"
+      },
+      "commons": "File:Il lago d'Iseo dal finestrino della torre.jpg"
+    },
+    {
+      "id": "gallery-basilica",
+      "source": "lovere-basilica-di-santa-maria-in-valvendra-facciata.jpg",
+      "section": "gallery",
+      "category": "lovere",
+      "alt": {
+        "en": "The facade of the Basilica di Santa Maria in Valvendra, Lovere",
+        "it": "La facciata della Basilica di Santa Maria in Valvendra, a Lovere"
+      },
+      "commons": "File:Lovere Basilica di Santa Maria in Valvendra Facciata.jpg"
+    },
+    {
+      "id": "gallery-palazzo",
+      "source": "lovere-italy-39219.jpg",
+      "section": "gallery",
+      "category": "lovere",
+      "alt": {
+        "en": "A long neoclassical palazzo with an arcaded front on Lovere's lakefront road",
+        "it": "Un lungo palazzo neoclassico con portico sulla strada del lungolago di Lovere"
+      },
+      "commons": "File:Lovere, Italy (39219).jpg"
+    },
+    {
+      "id": "gallery-lakeside-trees",
+      "source": "lovere-italy-36571.jpg",
+      "section": "gallery",
+      "category": "lovere",
+      "alt": {
+        "en": "Benches and bare trees along the lake at Lovere, sun low behind the branches",
+        "it": "Panchine e alberi spogli lungo il lago a Lovere, il sole basso dietro i rami"
+      },
+      "commons": "File:Lovere, Italy (36571).jpg"
+    },
+    {
+      "id": "gallery-panorama",
+      "source": "lovere-giorno.jpg",
+      "section": "gallery",
+      "category": "lovere",
+      "alt": {
+        "en": "Lovere and the head of Lake Iseo from the hills above the town",
+        "it": "Lovere e l'alto Lago d'Iseo dalle colline sopra il paese"
+      },
+      "commons": "File:Lovere Giorno.jpg"
+    },
+    {
+      "id": "gallery-from-ceratello",
+      "source": "lake-iseo-and-lovere-from-ceratello.jpg",
+      "section": "gallery",
+      "category": "lake",
+      "alt": {
+        "en": "Lake Iseo and Lovere seen from Ceratello, high on the western slope",
+        "it": "Il Lago d'Iseo e Lovere visti da Ceratello, in alto sul versante occidentale"
+      },
+      "commons": "File:Lake Iseo and Lovere from Ceratello.jpg"
+    },
+    {
+      "id": "gallery-island",
+      "source": "lovere-lago-d-iseo-di-mattina-5.jpg",
+      "section": "gallery",
+      "category": "lake",
+      "alt": {
+        "en": "An island on Lake Iseo at dawn, the mountain rising straight from the water behind it",
+        "it": "Un'isola sul Lago d'Iseo all'alba, la montagna che sale dritta dall'acqua alle spalle"
+      },
+      "commons": "File:Lovere Lago d'Iseo di Mattina 5.jpg"
+    },
+    {
+      "id": "gallery-rower",
+      "source": "lovere-lago-d-iseo-di-mattina-7.jpg",
+      "section": "gallery",
+      "category": "lake",
+      "alt": {
+        "en": "A single rowing boat crossing Lake Iseo below the mountains",
+        "it": "Una barca a remi attraversa il Lago d'Iseo sotto le montagne"
+      },
+      "commons": "File:Lovere Lago d'Iseo di Mattina 7.jpg"
+    },
+    {
+      "id": "gallery-alpenglow",
+      "source": "lovere-lago-d-iseo-di-sera-3.jpg",
+      "section": "gallery",
+      "category": "lake",
+      "alt": {
+        "en": "The last sun on a mountain face above Lake Iseo",
+        "it": "L'ultimo sole su una parete di montagna sopra il Lago d'Iseo"
+      },
+      "commons": "File:Lovere Lago d'Iseo di Sera 3.jpg"
+    },
+    {
+      "id": "gallery-headland",
+      "source": "lovere-lago-d-iseo-di-sera-4.jpg",
+      "section": "gallery",
+      "category": "lake",
+      "alt": {
+        "en": "A wooded headland running down into Lake Iseo at dusk",
+        "it": "Un promontorio boscoso che scende nel Lago d'Iseo all'imbrunire"
+      },
+      "commons": "File:Lovere Lago d'Iseo di Sera 4.jpg"
+    },
+    {
+      "id": "gallery-mist",
+      "source": "lovere-jezioro-2.jpg",
+      "section": "gallery",
+      "category": "lake",
+      "alt": {
+        "en": "Mist across Lake Iseo, the mountains reduced to outlines",
+        "it": "Foschia sul Lago d'Iseo, le montagne ridotte a profili"
+      },
+      "commons": "File:Lovere jezioro 2.jpg"
+    },
+    {
+      "id": "beyond-bogn",
+      "source": "b-gn-di-zorzino-riva-di-solto-lake-iseo-italy.jpg",
+      "section": "beyond",
+      "category": "lake",
+      "alt": {
+        "en": "The Bögn di Zorzino at Riva di Solto — limestone cliffs dropping straight into the green water of Lake Iseo",
+        "it": "Il Bögn di Zorzino a Riva di Solto — le rocce calcaree che cadono a picco nell'acqua verde del Lago d'Iseo"
+      },
+      "commons": "File:Bögn di Zorzino, Riva di Solto, lake Iseo, Italy.jpg"
+    },
+    {
+      "id": "beyond-rockArt",
+      "source": "scena-del-fabbro-parco-di-naquane-r-35-capo-di-ponte-foto-lu.jpg",
+      "section": "beyond",
+      "category": "lovere",
+      "alt": {
+        "en": "The “scene of the smith” cut into Rock 35 at the Naquane rock-art park, Capo di Ponte",
+        "it": "La «scena del fabbro» incisa sulla Roccia 35 nel parco di Naquane, Capo di Ponte"
+      },
+      "commons": "File:Scena del fabbro - Parco di Naquane R 35 - Capo di Ponte (Foto Luca Giarelli).jpg"
+    },
+    {
+      "id": "beyond-roman",
+      "source": "anfiteatro-romano-cividate-camuno-foto-luca-giarelli.jpg",
+      "section": "beyond",
+      "category": "lovere",
+      "alt": {
+        "en": "The Roman amphitheatre at Cividate Camuno, excavated in the archaeological park of the Valle Camonica",
+        "it": "L'anfiteatro romano di Cividate Camuno, nel parco archeologico della Valle Camonica"
+      },
+      "commons": "File:Anfiteatro romano - Cividate Camuno (Foto Luca Giarelli).jpg"
+    },
+    {
+      "id": "beyond-ski",
+      "source": "montecampione.jpg",
+      "section": "beyond",
+      "category": "lovere",
+      "commons": "File:Montecampione.JPG",
+      "alt": {
+        "en": "The Montecampione ski area under snow, its pistes and lifts above the Valle Camonica",
+        "it": "Il comprensorio di Montecampione sotto la neve, piste e impianti sopra la Valle Camonica"
+      }
+    },
+    {
+      "id": "gallery-bogn-turquoise",
+      "source": "high-angle-shot-of-b-gn-di-zorzino-riva-di-solto-lake-iseo-i.jpg",
+      "section": "gallery",
+      "category": "lake",
+      "commons": "File:High-angle shot of Bögn di Zorzino, Riva di Solto, lake Iseo, Italy.jpg",
+      "alt": {
+        "en": "Turquoise water under the white cliffs of the Bögn di Zorzino, Riva di Solto",
+        "it": "Acqua turchese sotto le rocce bianche del Bögn di Zorzino, a Riva di Solto"
+      }
+    }
+  ]
+}

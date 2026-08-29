@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-h: 5.25rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory text-ink font-sans antialiased;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #d3c8b6;
+    color: #1e1c19;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-charcoal;
+    font-weight: 300;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  /* Elegant, low-contrast focus ring that survives a light palette. */
+  :focus-visible {
+    outline: 1px solid #41606d;
+    outline-offset: 3px;
+  }
+
+  /* A hairline that reads as letterpress rather than a border. */
+  hr { @apply border-0 h-px bg-stone; }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-editorial px-6 sm:px-8 lg:px-12;
+  }
+
+  .shell-narrow {
+    @apply mx-auto w-full max-w-4xl px-6 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-sans text-eyebrow uppercase text-muted font-normal;
+  }
+
+  .lede {
+    @apply font-display text-[clamp(1.25rem,2.2vw,1.75rem)] leading-[1.45] text-ink/90 italic font-light;
+  }
+
+  /* Understated editorial rules used as section separators. */
+  .rule {
+    @apply h-px w-full bg-stone;
+  }
+
+  /* --- Buttons ------------------------------------------------------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 font-sans text-[0.78rem] uppercase
+           tracking-[0.18em] font-normal transition-all duration-500 ease-soft
+           px-8 py-4 border select-none;
+  }
+
+  .btn-solid {
+    @apply btn bg-charcoal text-ivory border-charcoal hover:bg-transparent hover:text-charcoal;
+  }
+
+  .btn-solid-invert {
+    @apply btn bg-ivory/95 text-charcoal border-ivory/95 hover:bg-transparent hover:text-ivory hover:border-ivory;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-charcoal border-charcoal/25 hover:border-charcoal hover:bg-charcoal hover:text-ivory;
+  }
+
+  .btn-ghost-invert {
+    @apply btn bg-transparent text-ivory border-ivory/40 hover:bg-ivory hover:text-charcoal hover:border-ivory;
+  }
+
+  .btn:disabled { @apply opacity-40 pointer-events-none; }
+
+  /* Text link with a rule that draws itself on hover. */
+  .link-rule {
+    @apply relative inline-block text-charcoal no-underline;
+  }
+  .link-rule::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-px w-full bg-current origin-right scale-x-0
+           transition-transform duration-500 ease-veil;
+  }
+  .link-rule:hover::after { @apply origin-left scale-x-100; }
+
+  /* --- Forms --------------------------------------------------------- */
+  .field {
+    @apply w-full bg-transparent border-0 border-b border-sand/60 px-0 py-3
+           font-sans text-[0.95rem] text-charcoal placeholder:text-muted/50
+           focus:border-charcoal focus:ring-0 transition-colors duration-300;
+  }
+
+  .field-label {
+    @apply block eyebrow mb-2;
+  }
+
+  /* --- Photography --------------------------------------------------- */
+  .frame {
+    @apply relative overflow-hidden bg-stone;
+  }
+
+  /* Slow, weighty hover on editorial imagery. */
+  .frame-hover img {
+    @apply transition-transform duration-[1400ms] ease-veil will-change-transform;
+  }
+  .frame-hover:hover img { transform: scale(1.045); }
+
+  /* Warm veil that lifts text off photography without a heavy gradient. */
+  .veil {
+    @apply absolute inset-0 pointer-events-none;
+    background:
+      linear-gradient(to top, rgba(20, 18, 16, 0.62) 0%, rgba(20, 18, 16, 0.18) 42%, rgba(20, 18, 16, 0.04) 70%),
+      linear-gradient(to bottom, rgba(20, 18, 16, 0.34) 0%, rgba(20, 18, 16, 0) 38%);
+  }
+
+  .veil-soft {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(to top, rgba(20, 18, 16, 0.5) 0%, rgba(20, 18, 16, 0) 55%);
+  }
+}
+
+@layer utilities {
+  .text-shadow-soft {
+    text-shadow: 0 1px 40px rgba(16, 14, 12, 0.45), 0 1px 3px rgba(16, 14, 12, 0.25);
+  }
+
+  /* Scroll-reveal primitive — see components/Reveal.tsx */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

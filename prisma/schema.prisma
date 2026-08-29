@@ -1,0 +1,107 @@
+// Casa Piazzola — Lovere, Lake Iseo
+//
+// Dev default is SQLite so the project runs with zero infrastructure.
+// For production switch `provider` to "postgresql" and point DATABASE_URL at
+// your Postgres instance (Neon / Supabase / Vercel Postgres all work as-is).
+//
+// Status fields are plain strings rather than enums so the same schema runs
+// unchanged on SQLite and Postgres. The allowed values live in
+// src/lib/constants.ts and are enforced in TypeScript.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// A reservation.
+/// `checkIn` is inclusive, `checkOut` is exclusive — the standard hotel
+/// convention, so a departure day is immediately re-bookable as an arrival.
+model Booking {
+  id        String @id @default(cuid())
+  reference String @unique // human-facing, e.g. LOV-7Q4M2K
+
+  checkIn  DateTime
+  checkOut DateTime
+  guests   Int
+  nights   Int
+
+  guestName  String
+  guestEmail String
+  guestPhone String?
+  country    String?
+  message    String? // guest's note at booking time
+
+  // Money is stored in cents to avoid float drift. Currency is EUR throughout.
+  nightlyBreakdown String // JSON: [{ date, amount }] — the per-night rates quoted
+  accommodation    Int
+  cleaningFee      Int
+  touristTax       Int
+  total            Int
+  currency         String @default("eur")
+
+  /// PENDING | CONFIRMED | CANCELLED
+  status String @default("PENDING")
+  /// UNPAID | PAID | REFUNDED | PARTIALLY_REFUNDED
+  paymentStatus String @default("UNPAID")
+
+  stripeSessionId       String? @unique
+  stripePaymentIntentId String?
+  refundedAmount        Int     @default(0)
+
+  locale String @default("en")
+
+  messages Message[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([checkIn, checkOut])
+  @@index([status])
+}
+
+/// Dates the host has closed manually: owner's own stay, maintenance,
+/// or a booking taken on another channel (Airbnb, Booking.com).
+model BlockedDate {
+  id     String   @id @default(cuid())
+  date   DateTime @unique
+  reason String?
+
+  createdAt DateTime @default(now())
+}
+
+/// Nightly rate overrides. Any date without a row falls back to the
+/// seasonal calendar in src/lib/pricing.ts.
+model RateOverride {
+  id     String   @id @default(cuid())
+  date   DateTime @unique
+  amount Int // cents
+
+  createdAt DateTime @default(now())
+}
+
+/// Guest ↔ host correspondence. A thread is keyed by email so pre-booking
+/// enquiries and in-stay questions from the same guest stay together.
+model Message {
+  id      String  @id @default(cuid())
+  thread  String // normalised guest email
+  /// GUEST | HOST
+  author  String
+  name    String?
+  email   String
+  phone   String?
+  subject String?
+  body    String
+
+  readAt DateTime?
+
+  bookingId String?
+  booking   Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+
+  @@index([thread, createdAt])
+}

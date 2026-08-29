@@ -1,0 +1,29 @@
+# dependencies
+node_modules
+
+# next.js
+.next
+out
+next-env.d.ts
+
+# environment — never commit these
+.env
+.env.local
+.env*.local
+
+# database
+prisma/*.db
+prisma/*.db-journal
+
+# generated photography — rebuild with: npm run images
+public/images/apartment/*.jpg
+public/images/lovere/*.jpg
+public/images/og/*.jpg
+
+# destination source photography — re-downloadable with: npm run photos:fetch
+# (provenance is kept in photos/lovere/_commons-info.json, which IS tracked)
+photos/lovere/*.jpg
+
+# os
+.DS_Store
+*.log
