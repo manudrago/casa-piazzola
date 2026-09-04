@@ -454,6 +454,21 @@
       "commons": "File:Anfiteatro romano - Cividate Camuno (Foto Luca Giarelli).jpg"
     },
     {
+      "id": "beyond-thermal",
+      "source": "terme-panoramio-5.jpg",
+      "section": "beyond",
+      "category": "lovere",
+      "focus": {
+        "x": 50,
+        "y": 55
+      },
+      "alt": {
+        "en": "The Liberty dome and colonnade of the Boario spa, seen across its formal park below the mountains of the Valle Camonica",
+        "it": "La cupola liberty e il colonnato delle Terme di Boario, viste dal parco all’italiana sotto le montagne della Valle Camonica"
+      },
+      "commons": "File:Terme - panoramio (5).jpg"
+    },
+    {
       "id": "beyond-ski",
       "source": "montecampione.jpg",
       "section": "beyond",

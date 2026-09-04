@@ -682,5 +682,15 @@
   "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Fabiuxfabiux\" title=\"User:Fabiuxfabiux\">Fabio Pani</a>",
   "desc": "High-angle shot of Bögn di Zorzino, Riva di Solto, lake Iseo, Italy.",
   "page": "https://commons.wikimedia.org/wiki/File:High-angle_shot_of_B%C3%B6gn_di_Zorzino,_Riva_di_Solto,_lake_Iseo,_Italy.jpg"
+ },
+ "File:Terme - panoramio (5).jpg": {
+  "orig": "https://upload.wikimedia.org/wikipedia/commons/5/52/Terme_-_panoramio_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "w": 1920,
+  "h": 2560,
+  "lic": "CC BY 3.0",
+  "licurl": "https://creativecommons.org/licenses/by/3.0",
+  "artist": "<a rel=\"nofollow\" class=\"external text\" href=\"https://web.archive.org/web/20161029110854/http://www.panoramio.com/user/5343693?with_photo_id=94167372\">Gianluca Cogoli</a>",
+  "desc": "Terme",
+  "page": "https://commons.wikimedia.org/wiki/File:Terme_-_panoramio_(5).jpg"
  }
 }
