@@ -42,7 +42,7 @@ export const rates = {
 
   cleaningFee: 2000, // €20, charged once per stay
   /** Per person, per night. Verify with the Comune — see the note above. */
-  touristTaxPerPersonPerNight: 150, // €1.50
+  touristTaxPerPersonPerNight: 200, // €2.00
   /** Nights beyond this are not taxed. Many comuni cap at 5–7. Verify. */
   touristTaxMaxNights: 5,
   /** Age below which guests are exempt. Verify. */
