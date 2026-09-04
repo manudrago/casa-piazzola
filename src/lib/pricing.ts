@@ -40,7 +40,7 @@ export const rates = {
     // '2026-12-31': 18000,
   } as Record<string, number>,
 
-  cleaningFee: 4500, // €45, charged once per stay
+  cleaningFee: 2000, // €20, charged once per stay
   /** Per person, per night. Verify with the Comune — see the note above. */
   touristTaxPerPersonPerNight: 150, // €1.50
   /** Nights beyond this are not taxed. Many comuni cap at 5–7. Verify. */

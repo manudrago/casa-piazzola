@@ -205,7 +205,7 @@ export function terms(locale: Locale): LegalSection[] {
         heading: 'Prenotazione e pagamento',
         body: [
           'La prenotazione si perfeziona con il pagamento integrale dell’importo indicato al momento della conferma. Il pagamento è gestito da Stripe.',
-          `Soggiorno minimo ${h.minNights} notti. Capienza massima ${h.maxGuests} ospiti; non è consentito ospitare persone ulteriori.`,
+          `Soggiorno minimo ${h.minNights} ${h.minNights === 1 ? 'notte' : 'notti'}. Capienza massima ${h.maxGuests} ospiti; non è consentito ospitare persone ulteriori.`,
           'L’imposta di soggiorno è riscossa per conto del Comune di Lovere secondo le tariffe vigenti.',
         ],
       },
@@ -258,7 +258,7 @@ export function terms(locale: Locale): LegalSection[] {
       heading: 'Booking and payment',
       body: [
         'A booking is made when the full amount shown at confirmation has been paid. Payment is handled by Stripe.',
-        `Minimum stay ${h.minNights} nights. Maximum occupancy ${h.maxGuests} guests; additional people may not stay in the apartment.`,
+        `Minimum stay ${h.minNights} ${h.minNights === 1 ? 'night' : 'nights'}. Maximum occupancy ${h.maxGuests} guests; additional people may not stay in the apartment.`,
         'The tourist tax is collected on behalf of the Comune di Lovere at the rate in force.',
       ],
     },
