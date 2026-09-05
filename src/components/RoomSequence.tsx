@@ -7,8 +7,9 @@ import type { Dictionary } from '@/lib/i18n';
 import { useLightbox } from './LightboxProvider';
 
 /**
- * The photo-first tour of the apartment: Living, Sleep, Kitchen, The details,
- * Your stay. Each section takes a different shape — full-bleed, offset pair,
+ * The photo-first tour of the apartment: Living, Sleep, The details, Your
+ * stay. The kitchen is open-plan along one wall of the living area, so it is
+ * shown there rather than given a block of its own. Each section takes a different shape — full-bleed, offset pair,
  * tall single — so that scrolling through them feels like turning pages of a
  * magazine rather than reading a grid of thumbnails.
  */
@@ -18,10 +19,9 @@ type SectionKey = 'living' | 'sleep' | 'kitchen' | 'details' | 'yourStay';
 // Layouts are chosen to match how many photographs each room actually has.
 // If you add a third interior shot to a room, promote it to `trio` here.
 const SEQUENCE: { key: SectionKey; layout: 'full' | 'pair' | 'offset' | 'trio' }[] = [
-  { key: 'living', layout: 'offset' },
-  { key: 'sleep', layout: 'pair' },
-  { key: 'kitchen', layout: 'full' },
-  { key: 'details', layout: 'pair' },
+  { key: 'living', layout: 'pair' },
+  { key: 'sleep', layout: 'full' },
+  { key: 'details', layout: 'full' },
   { key: 'yourStay', layout: 'full' },
 ];
 

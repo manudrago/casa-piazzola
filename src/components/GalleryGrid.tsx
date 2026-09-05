@@ -34,12 +34,24 @@ export default function GalleryGrid({
     [images, filter],
   );
 
-  const filters: { key: Filter; label: string }[] = [
-    { key: 'all', label: d.gallery.filterAll },
-    { key: 'apartment', label: d.gallery.filterApartment },
-    { key: 'lovere', label: d.gallery.filterLovere },
-    { key: 'lake', label: d.gallery.filterLake },
-  ];
+  // A tab that leads to an empty grid is worse than no tab: the guest clicks
+  // it, sees nothing, and reads the whole gallery as broken. Categories with
+  // no photographs yet are simply not offered, and reappear on their own once
+  // the photography lands.
+  const filters = useMemo(
+    () =>
+      (
+        [
+          { key: 'all', label: d.gallery.filterAll },
+          { key: 'apartment', label: d.gallery.filterApartment },
+          { key: 'lovere', label: d.gallery.filterLovere },
+          { key: 'lake', label: d.gallery.filterLake },
+        ] as { key: Filter; label: string }[]
+      ).filter(
+        (f) => f.key === 'all' || images.some((i) => i.category === f.key && i.src),
+      ),
+    [images, d],
+  );
 
   return (
     <>

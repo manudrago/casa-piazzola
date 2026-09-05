@@ -44,37 +44,6 @@
       }
     },
     {
-      "id": "sleep-02",
-      "source": "sleep-02.jpg",
-      "section": "sleep",
-      "alt": {
-        "en": "The double bed and fitted wardrobe in the bedroom",
-        "it": "Il letto matrimoniale e l'armadio a muro in camera"
-      }
-    },
-    {
-      "id": "kitchen-01",
-      "source": "kitchen-01.jpg",
-      "section": "kitchen",
-      "focus": {
-        "x": 55,
-        "y": 45
-      },
-      "alt": {
-        "en": "The kitchen along one wall of the living area, with oven, hob and dark splashback",
-        "it": "La cucina lungo una parete della zona giorno, con forno, piano cottura e paraschizzi scuro"
-      }
-    },
-    {
-      "id": "living-02",
-      "source": "living-02.jpg",
-      "section": "details",
-      "alt": {
-        "en": "A chest of drawers below a painting in the living area",
-        "it": "Un cassettone sotto un quadro nella zona giorno"
-      }
-    },
-    {
       "id": "bathroom-01",
       "source": "bathroom-01.jpg",
       "section": "details",
