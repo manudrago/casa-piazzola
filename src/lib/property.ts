@@ -39,7 +39,7 @@ export const property = {
 
   /** Verbatim from the listing. Do not add to this object without a source. */
   confirmed: {
-    typology: 'Bilocale — two-room apartment',
+    typology: 'Bilocale — one-bedroom apartment',
     interiorSizeSqm: 45, // "circa 45 mq" (superficie commerciale)
     rooms: 2, // "2 locali"
     bedrooms: 1, // "una camera da letto matrimoniale"

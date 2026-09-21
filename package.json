@@ -2,7 +2,7 @@
   "name": "casa-piazzola-lovere",
   "version": "1.0.0",
   "private": true,
-  "description": "Boutique holiday-rental site for a two-room apartment in the historic centre of Lovere, Lake Iseo.",
+  "description": "Boutique holiday-rental site for a one-bedroom apartment in the historic centre of Lovere, Lake Iseo.",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",

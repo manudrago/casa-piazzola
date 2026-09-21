@@ -1,6 +1,6 @@
 # Casa Piazzola — Lovere, Lake Iseo
 
-A direct-booking site for a two-room holiday apartment in the historic centre of
+A direct-booking site for a one-bedroom holiday apartment in the historic centre of
 Lovere, on the northern tip of Lake Iseo.
 
 Next.js 15 (App Router) · TypeScript · Tailwind · Prisma · Stripe Checkout ·
