@@ -39,7 +39,7 @@ const en = {
     eyebrow: 'The apartment',
     title: 'Stay in the heart of Lovere',
     body: [
-      'Casa Piazzola is a one-bedroom apartment on the second floor of a quiet building in Lovere’s historic centre, renovated inside and arranged simply: an open living area with the kitchen along one wall, a double bedroom, a bathroom.',
+      'Casa Piazzola is a one-bedroom apartment on the second floor of a quiet building in Lovere’s historic centre, renovated inside and arranged simply: an open living area with the kitchen and a sofa bed, a double bedroom, a bathroom. It sleeps up to four.',
       'Forty-five square metres, which is exactly enough. What the apartment gives you instead of square metres is the address — shops, cafés, restaurants and the boat quay are all a short walk away, down through the old streets to the lake.',
     ],
     factsTitle: 'The essentials',
@@ -47,6 +47,7 @@ const en = {
     amenities: [
       'Open-plan living area with kitchen',
       'One double bedroom',
+      'Sofa bed in the living area',
       'One bathroom',
       'Autonomous heating',
       'Renovated interior',
@@ -79,7 +80,7 @@ const en = {
     title: 'Room by room',
     living: {
       title: 'Living',
-      body: 'One room that does the work of three: somewhere to eat, somewhere to sit, and a window onto the old town.',
+      body: 'One room that does the work of three: somewhere to eat, somewhere to sit (the sofa opens into a bed for two), and a window onto the old town.',
     },
     sleep: {
       title: 'Sleep',
@@ -443,10 +444,10 @@ const en = {
   seo: {
     homeTitle: 'Casa Piazzola — Holiday Apartment in Lovere, Lake Iseo',
     homeDescription:
-      'A one-bedroom holiday apartment in the historic centre of Lovere, Lake Iseo, Italy. Sleeps 2, minutes from the lake. Check availability and book directly with the host.',
+      'A one-bedroom holiday apartment in the historic centre of Lovere, Lake Iseo, Italy. Sleeps 4, minutes from the lake. Check availability and book directly with the host.',
     apartmentTitle: 'The Apartment — Casa Piazzola, Lovere',
     apartmentDescription:
-      'A 45 m² one-bedroom apartment in Lovere’s old town: open living area with kitchen, double bedroom, bathroom. Renovated interior, autonomous heating.',
+      'A 45 m² one-bedroom apartment in Lovere’s old town: open living area with kitchen and sofa bed, double bedroom, bathroom. Sleeps 4. Renovated interior, autonomous heating.',
     lovereTitle: 'Lovere & Lake Iseo — Where to Stay and What to See',
     lovereDescription:
       'Lovere is one of Italy’s most beautiful villages, at the northern end of Lake Iseo: medieval streets, a two-kilometre promenade, the Accademia Tadini and the Torre Civica.',

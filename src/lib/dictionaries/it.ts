@@ -40,7 +40,7 @@ const it: Dictionary = {
     eyebrow: 'L’appartamento',
     title: 'Nel cuore di Lovere',
     body: [
-      'Casa Piazzola è un bilocale al secondo piano di un edificio tranquillo nel centro storico di Lovere, ristrutturato internamente e distribuito con semplicità: una zona giorno aperta con la cucina lungo una parete, una camera matrimoniale, un bagno.',
+      'Casa Piazzola è un bilocale al secondo piano di un edificio tranquillo nel centro storico di Lovere, ristrutturato internamente e distribuito con semplicità: una zona giorno aperta con la cucina e un divano letto, una camera matrimoniale, un bagno. Fino a quattro ospiti.',
       'Quarantacinque metri quadrati, che bastano. Quello che l’appartamento offre al posto dei metri quadrati è l’indirizzo — negozi, bar, ristoranti e l’imbarcadero sono tutti a pochi passi, giù per i vicoli fino al lago.',
     ],
     factsTitle: 'L’essenziale',
@@ -48,6 +48,7 @@ const it: Dictionary = {
     amenities: [
       'Zona giorno con cucina a vista',
       'Una camera matrimoniale',
+      'Divano letto in soggiorno',
       'Un bagno',
       'Riscaldamento autonomo',
       'Interni ristrutturati',
@@ -80,7 +81,7 @@ const it: Dictionary = {
     title: 'Stanza per stanza',
     living: {
       title: 'Il soggiorno',
-      body: 'Una stanza che ne fa tre: dove si mangia, dove ci si siede, e una finestra sul centro storico.',
+      body: 'Una stanza che ne fa tre: dove si mangia, dove ci si siede (il divano diventa un letto per due), e una finestra sul centro storico.',
     },
     sleep: {
       title: 'La camera',
@@ -444,10 +445,10 @@ const it: Dictionary = {
   seo: {
     homeTitle: 'Casa Piazzola — Appartamento vacanze a Lovere, Lago d’Iseo',
     homeDescription:
-      'Bilocale per vacanze nel centro storico di Lovere, Lago d’Iseo. Due ospiti, a pochi passi dal lago. Verifica la disponibilità e prenota direttamente.',
+      'Bilocale per vacanze nel centro storico di Lovere, Lago d’Iseo. Fino a quattro ospiti, a pochi passi dal lago. Verifica la disponibilità e prenota direttamente.',
     apartmentTitle: 'L’appartamento — Casa Piazzola, Lovere',
     apartmentDescription:
-      'Bilocale di 45 m² nel borgo di Lovere: zona giorno con cucina a vista, camera matrimoniale, bagno. Interni ristrutturati, riscaldamento autonomo.',
+      'Bilocale di 45 m² nel borgo di Lovere: zona giorno con cucina a vista e divano letto, camera matrimoniale, bagno. Fino a 4 ospiti. Interni ristrutturati, riscaldamento autonomo.',
     lovereTitle: 'Lovere e il Lago d’Iseo — dove dormire e cosa vedere',
     lovereDescription:
       'Lovere è uno dei Borghi più belli d’Italia, sulla punta nord del Lago d’Iseo: vicoli medievali, due chilometri di lungolago, l’Accademia Tadini e la Torre Civica.',

@@ -63,8 +63,8 @@ export const property = {
    * ► REVIEW EVERY VALUE BELOW BEFORE GOING LIVE.
    */
   hostConfigurable: {
-    /** One double bedroom. Raise only if you actually add a sofa bed. */
-    maxGuests: 2,
+    /** Double bed in the bedroom (2) + sofa bed in the living area (2). */
+    maxGuests: 4,
     minNights: 1,
     maxNights: 28,
     /** Days of notice required before an arrival date. */

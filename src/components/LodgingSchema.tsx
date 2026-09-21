@@ -40,6 +40,7 @@ export default function LodgingSchema({ locale }: { locale: string }) {
         yearBuilt: c.yearBuilt,
         amenityFeature: [
           { '@type': 'LocationFeatureSpecification', name: 'Open-plan kitchen', value: true },
+          { '@type': 'LocationFeatureSpecification', name: 'Sofa bed', value: true },
           { '@type': 'LocationFeatureSpecification', name: 'Autonomous heating', value: true },
           { '@type': 'LocationFeatureSpecification', name: 'Lift', value: c.lift },
         ],
