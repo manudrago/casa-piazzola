@@ -467,6 +467,7 @@ const en = {
     tabs: {
       bookings: 'Bookings',
       calendar: 'Calendar',
+      prices: 'Prices',
       messages: 'Messages',
     },
     upcoming: 'Upcoming stays',
@@ -507,6 +508,19 @@ const en = {
     markRead: 'Mark as read',
     noMessages: 'No messages.',
     thisMonth: 'This month',
+    setPrice: 'Set a price',
+    pricePerNight: 'Price per night (€)',
+    applyPrice: 'Apply',
+    resetPrice: 'Back to seasonal price',
+    customPrice: 'Custom price',
+    seasonalPrice: 'Seasonal price',
+    selected: 'Selected',
+    pricesHint:
+      'Click a day to start, another to end the range. Prices apply to new bookings; stays already booked keep what they paid.',
+    cleaningFeeLabel: 'Cleaning fee (€)',
+    cleaningFeeHint: 'Charged once per stay, on new bookings. Default {amount}.',
+    save: 'Save',
+    invalidAmount: 'That amount is not valid.',
   },
 
   email: {

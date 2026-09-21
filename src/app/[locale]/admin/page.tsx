@@ -5,6 +5,8 @@ import { prisma } from '@/lib/db';
 import { getDictionary } from '@/lib/i18n';
 import { BOOKING_STATUS } from '@/lib/constants';
 import { todayUTC, toISODate, addDays } from '@/lib/dates';
+import { cleaningFee } from '@/lib/availability';
+import { rates } from '@/lib/pricing';
 import AdminSignIn from '@/components/admin/AdminSignIn';
 import AdminDashboard from '@/components/admin/AdminDashboard';
 
@@ -39,7 +41,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
   const today = todayUTC();
   const horizon = addDays(today, 400);
 
-  const [bookings, blocked, messages] = await Promise.all([
+  const [bookings, blocked, messages, overrides, fee] = await Promise.all([
     prisma.booking.findMany({
       orderBy: { checkIn: 'asc' },
       where: { OR: [{ status: BOOKING_STATUS.CONFIRMED }, { status: BOOKING_STATUS.CANCELLED }] },
@@ -50,6 +52,11 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
       orderBy: { date: 'asc' },
     }),
     prisma.message.findMany({ orderBy: { createdAt: 'desc' }, take: 300 }),
+    prisma.rateOverride.findMany({
+      where: { date: { gte: today, lt: horizon } },
+      orderBy: { date: 'asc' },
+    }),
+    cleaningFee(),
   ]);
 
   return (
@@ -75,6 +82,9 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
         createdAt: b.createdAt.toISOString(),
       }))}
       blocked={blocked.map((b) => ({ date: toISODate(b.date), reason: b.reason }))}
+      overrides={overrides.map((o) => ({ date: toISODate(o.date), amount: o.amount }))}
+      cleaningFee={fee}
+      defaultCleaningFee={rates.cleaningFee}
       messages={messages.map((m) => ({
         id: m.id,
         thread: m.thread,

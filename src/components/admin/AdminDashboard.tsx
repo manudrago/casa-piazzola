@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { fill, type Dictionary } from '@/lib/i18n';
-import { formatMoney } from '@/lib/pricing';
+import { formatMoney, nightlyRate } from '@/lib/pricing';
 import { formatDate, toUTCDate, toISODate, todayUTC, addDays, monthName, daysInMonth, firstWeekdayOffset, weekdayLabels, nightsOf } from '@/lib/dates';
 import { BOOKING_STATUS, PAYMENT_STATUS } from '@/lib/constants';
 
@@ -27,6 +27,8 @@ export type AdminBooking = {
 
 export type AdminBlocked = { date: string; reason: string | null };
 
+export type AdminOverride = { date: string; amount: number };
+
 export type AdminMessage = {
   id: string;
   thread: string;
@@ -40,7 +42,7 @@ export type AdminMessage = {
   createdAt: string;
 };
 
-type Tab = 'bookings' | 'calendar' | 'messages';
+type Tab = 'bookings' | 'calendar' | 'prices' | 'messages';
 
 /**
  * The host's whole world in one page: who is coming, what the calendar looks
@@ -54,12 +56,18 @@ export default function AdminDashboard({
   bookings,
   blocked,
   messages,
+  overrides,
+  cleaningFee,
+  defaultCleaningFee,
 }: {
   d: Dictionary;
   locale: string;
   bookings: AdminBooking[];
   blocked: AdminBlocked[];
   messages: AdminMessage[];
+  overrides: AdminOverride[];
+  cleaningFee: number;
+  defaultCleaningFee: number;
 }) {
   const [tab, setTab] = useState<Tab>('bookings');
   const [busy, setBusy] = useState<string | null>(null);
@@ -124,7 +132,7 @@ export default function AdminDashboard({
         </dl>
 
         <div role="tablist" className="mt-14 flex gap-8 border-b border-stone">
-          {(['bookings', 'calendar', 'messages'] as Tab[]).map((t) => (
+          {(['bookings', 'calendar', 'prices', 'messages'] as Tab[]).map((t) => (
             <button
               key={t}
               role="tab"
@@ -169,6 +177,20 @@ export default function AdminDashboard({
               busy={busy}
               onBlock={(from, to, reason) => call('/api/admin/block', { from, to, reason })}
               onUnblock={(date) => call('/api/admin/block', { from: date, to: date, unblock: true })}
+            />
+          )}
+
+          {tab === 'prices' && (
+            <PricesAdmin
+              d={d}
+              locale={locale}
+              overrides={overrides}
+              cleaningFee={cleaningFee}
+              defaultCleaningFee={defaultCleaningFee}
+              busy={busy}
+              onSetPrice={(from, to, amount) => call('/api/admin/rates', { from, to, amount })}
+              onReset={(from, to) => call('/api/admin/rates', { from, to, clear: true })}
+              onSaveCleaning={(amount) => call('/api/admin/settings', { cleaningFee: amount })}
             />
           )}
 
@@ -737,6 +759,287 @@ function Messages({
             </button>
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+/** "120", "120,50", "€ 95.5" → cents. Anything else → null. */
+function parseEuros(input: string): number | null {
+  const cleaned = input.replace(/[€\s]/g, '').replace(',', '.');
+  if (!/^\d+(\.\d{1,2})?$/.test(cleaned)) return null;
+  return Math.round(parseFloat(cleaned) * 100);
+}
+
+/**
+ * Nightly prices and the cleaning fee. Every day shows what a guest would pay
+ * for that night right now: the host's own price where one is set, otherwise
+ * the seasonal price from src/lib/pricing.ts. Custom prices are marked, so the
+ * host can see at a glance which nights they have touched.
+ */
+function PricesAdmin({
+  d,
+  locale,
+  overrides,
+  cleaningFee,
+  defaultCleaningFee,
+  busy,
+  onSetPrice,
+  onReset,
+  onSaveCleaning,
+}: {
+  d: Dictionary;
+  locale: string;
+  overrides: AdminOverride[];
+  cleaningFee: number;
+  defaultCleaningFee: number;
+  busy: string | null;
+  onSetPrice: (from: string, to: string, amount: number) => void;
+  onReset: (from: string, to: string) => void;
+  onSaveCleaning: (amount: number) => void;
+}) {
+  const today = todayUTC();
+  const todayISO = toISODate(today);
+  const [cursor, setCursor] = useState({ year: today.getUTCFullYear(), month: today.getUTCMonth() });
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const [price, setPrice] = useState('');
+  const [fee, setFee] = useState(String(cleaningFee / 100));
+  const [error, setError] = useState<string | null>(null);
+
+  const overrideMap = useMemo(() => new Map(overrides.map((o) => [o.date, o.amount])), [overrides]);
+  const wk = weekdayLabels(locale);
+  const end = to || from;
+
+  function pick(iso: string) {
+    setError(null);
+    if (!from || to || iso < from) {
+      setFrom(iso);
+      setTo('');
+    } else {
+      setTo(iso);
+    }
+  }
+
+  function apply() {
+    const cents = parseEuros(price);
+    if (cents === null || cents <= 0) return setError(d.admin.invalidAmount);
+    onSetPrice(from, end, cents);
+  }
+
+  function saveFee() {
+    const cents = parseEuros(fee);
+    if (cents === null) return setError(d.admin.invalidAmount);
+    onSaveCleaning(cents);
+  }
+
+  const shift = (delta: number) =>
+    setCursor(({ year, month }) => {
+      const m = month + delta;
+      return { year: year + Math.floor(m / 12), month: ((m % 12) + 12) % 12 };
+    });
+
+  return (
+    <div className="grid gap-14 lg:grid-cols-12">
+      <div className="lg:col-span-8">
+        <div className="mb-7 flex items-center gap-5">
+          <button
+            type="button"
+            onClick={() => shift(-1)}
+            className="flex h-9 w-9 items-center justify-center border border-stone hover:border-charcoal"
+            aria-label={d.booking.monthPrev}
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={() => shift(1)}
+            className="flex h-9 w-9 items-center justify-center border border-stone hover:border-charcoal"
+            aria-label={d.booking.monthNext}
+          >
+            ›
+          </button>
+        </div>
+
+        <div className="grid gap-10 sm:grid-cols-2">
+          {[0, 1].map((offset) => {
+            const m = cursor.month + offset;
+            const year = cursor.year + Math.floor(m / 12);
+            const month = ((m % 12) + 12) % 12;
+            const pad = firstWeekdayOffset(year, month);
+
+            return (
+              <div key={`${year}-${month}`}>
+                <h3 className="mb-4 font-display text-[1.25rem] font-light">
+                  {monthName(month, locale)} <span className="text-muted">{year}</span>
+                </h3>
+                <div className="mb-1 grid grid-cols-7 gap-1">
+                  {wk.map((w) => (
+                    <div key={w} className="text-center text-[0.55rem] uppercase tracking-[0.12em] text-muted">
+                      {w}
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-7 gap-1">
+                  {Array.from({ length: pad }, (_, i) => (
+                    <div key={`p${i}`} />
+                  ))}
+                  {Array.from({ length: daysInMonth(year, month) }, (_, i) => {
+                    const date = new Date(Date.UTC(year, month, i + 1));
+                    const iso = toISODate(date);
+                    const past = iso < todayISO;
+                    const custom = overrideMap.get(iso);
+                    const amount = custom ?? nightlyRate(date);
+                    const inRange = from && iso >= from && iso <= end;
+                    return (
+                      <button
+                        key={iso}
+                        type="button"
+                        disabled={past || busy !== null}
+                        onClick={() => pick(iso)}
+                        title={`${formatDate(date, locale)} · ${formatMoney(amount, locale)} · ${
+                          custom != null ? d.admin.customPrice : d.admin.seasonalPrice
+                        }`}
+                        className={`flex aspect-square flex-col items-center justify-center leading-tight transition-colors ${
+                          past
+                            ? 'text-muted/50'
+                            : inRange
+                              ? 'bg-charcoal text-ivory'
+                              : custom != null
+                                ? 'bg-sand/60 text-charcoal hover:bg-sand'
+                                : 'text-ink hover:bg-stone/60'
+                        }`}
+                      >
+                        <span className="text-[0.72rem]">{i + 1}</span>
+                        {!past && (
+                          <span className={`text-[0.58rem] ${inRange ? 'text-ivory/80' : 'text-muted'}`}>
+                            {Math.round(amount / 100)}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-x-7 gap-y-2 border-t border-stone pt-5 text-[0.62rem] uppercase tracking-[0.14em] text-muted">
+          <span className="flex items-center gap-2">
+            <span className="block h-3 w-3 border border-stone" />
+            {d.admin.seasonalPrice}
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="block h-3 w-3 bg-sand/60" />
+            {d.admin.customPrice}
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="block h-3 w-3 bg-charcoal" />
+            {d.admin.selected}
+          </span>
+        </div>
+      </div>
+
+      <div className="space-y-8 lg:col-span-4">
+        <div className="border border-stone bg-paper p-7">
+          <h3 className="eyebrow">{d.admin.setPrice}</h3>
+          <p className="mt-4 text-[0.82rem] leading-relaxed text-muted">{d.admin.pricesHint}</p>
+          <div className="mt-6 space-y-5">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="field-label" htmlFor="price-from">
+                  {d.admin.blockFrom}
+                </label>
+                <input
+                  id="price-from"
+                  type="date"
+                  min={todayISO}
+                  value={from}
+                  onChange={(e) => setFrom(e.target.value)}
+                  className="field"
+                />
+              </div>
+              <div>
+                <label className="field-label" htmlFor="price-to">
+                  {d.admin.blockTo}
+                </label>
+                <input
+                  id="price-to"
+                  type="date"
+                  min={from || todayISO}
+                  value={to}
+                  onChange={(e) => setTo(e.target.value)}
+                  className="field"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="field-label" htmlFor="price-amount">
+                {d.admin.pricePerNight}
+              </label>
+              <input
+                id="price-amount"
+                inputMode="decimal"
+                placeholder="120"
+                value={price}
+                onChange={(e) => {
+                  setPrice(e.target.value);
+                  setError(null);
+                }}
+                className="field"
+              />
+            </div>
+            {error && <p className="text-[0.82rem] text-lake-deep">{error}</p>}
+            <button
+              type="button"
+              disabled={!from || !price || busy !== null}
+              onClick={apply}
+              className="btn-solid w-full"
+            >
+              {d.admin.applyPrice}
+            </button>
+            <button
+              type="button"
+              disabled={!from || busy !== null}
+              onClick={() => onReset(from, end)}
+              className="link-rule w-full text-center text-[0.7rem] uppercase tracking-[0.14em] text-muted"
+            >
+              {d.admin.resetPrice}
+            </button>
+          </div>
+        </div>
+
+        <div className="border border-stone bg-paper p-7">
+          <label className="eyebrow block" htmlFor="cleaning-fee">
+            {d.admin.cleaningFeeLabel}
+          </label>
+          <p className="mt-4 text-[0.82rem] leading-relaxed text-muted">
+            {fill(d.admin.cleaningFeeHint, { amount: formatMoney(defaultCleaningFee, locale) })}
+          </p>
+          <div className="mt-5 flex gap-3">
+            <input
+              id="cleaning-fee"
+              inputMode="decimal"
+              value={fee}
+              onChange={(e) => {
+                setFee(e.target.value);
+                setError(null);
+              }}
+              className="field flex-1"
+            />
+            <button
+              type="button"
+              disabled={busy !== null || parseEuros(fee) === cleaningFee}
+              onClick={saveFee}
+              className="btn-solid shrink-0 !px-6"
+            >
+              {d.admin.save}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

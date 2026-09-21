@@ -83,6 +83,16 @@ model RateOverride {
   createdAt DateTime @default(now())
 }
 
+/// Host-editable settings that are not per-date: currently the cleaning fee.
+/// Integer values (money in cents); a missing row means "use the default in
+/// src/lib/pricing.ts".
+model Setting {
+  key   String @id
+  value Int
+
+  updatedAt DateTime @updatedAt
+}
+
 /// Guest ↔ host correspondence. A thread is keyed by email so pre-booking
 /// enquiries and in-stay questions from the same guest stay together.
 model Message {

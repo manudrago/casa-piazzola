@@ -468,6 +468,7 @@ const it: Dictionary = {
     tabs: {
       bookings: 'Prenotazioni',
       calendar: 'Calendario',
+      prices: 'Prezzi',
       messages: 'Messaggi',
     },
     upcoming: 'Prossimi soggiorni',
@@ -508,6 +509,19 @@ const it: Dictionary = {
     markRead: 'Segna come letto',
     noMessages: 'Nessun messaggio.',
     thisMonth: 'Questo mese',
+    setPrice: 'Imposta un prezzo',
+    pricePerNight: 'Prezzo a notte (€)',
+    applyPrice: 'Applica',
+    resetPrice: 'Torna al prezzo stagionale',
+    customPrice: 'Prezzo personalizzato',
+    seasonalPrice: 'Prezzo stagionale',
+    selected: 'Selezionato',
+    pricesHint:
+      'Clicca un giorno per iniziare, un altro per chiudere l’intervallo. I prezzi valgono per le nuove prenotazioni; quelle già fatte restano invariate.',
+    cleaningFeeLabel: 'Pulizie finali (€)',
+    cleaningFeeHint: 'Una volta per soggiorno, sulle nuove prenotazioni. Predefinito {amount}.',
+    save: 'Salva',
+    invalidAmount: 'Importo non valido.',
   },
 
   email: {

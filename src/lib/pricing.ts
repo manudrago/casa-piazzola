@@ -40,6 +40,7 @@ export const rates = {
     // '2026-12-31': 18000,
   } as Record<string, number>,
 
+  /** Default only — the host can change it from /admin (Setting 'cleaningFee'). */
   cleaningFee: 2000, // €20, charged once per stay
   /** Per person, per night. Verify with the Comune — see the note above. */
   touristTaxPerPersonPerNight: 200, // €2.00
@@ -108,6 +109,7 @@ export function buildQuote(
   nights: Date[],
   guests: number,
   overrides: Record<string, number> = {},
+  cleaningFeeCents: number = rates.cleaningFee,
 ): Omit<Quote, 'checkIn' | 'checkOut'> {
   const nightly: NightRate[] = nights.map((d) => ({
     date: toISODate(d),
@@ -129,7 +131,7 @@ export function buildQuote(
   const accommodation = accommodationGross - discount;
   const taxedNights = Math.min(nights.length, rates.touristTaxMaxNights);
   const touristTax = rates.touristTaxPerPersonPerNight * guests * taxedNights;
-  const cleaningFee = rates.cleaningFee;
+  const cleaningFee = cleaningFeeCents;
 
   return {
     nights: nights.length,

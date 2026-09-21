@@ -50,6 +50,16 @@ export async function rateOverrides(from: Date, to: Date): Promise<Record<string
   return Object.fromEntries(rows.map((r) => [toISODate(r.date), r.amount]));
 }
 
+/** Setting keys the host can change from /admin. */
+export const SETTING = { CLEANING_FEE: 'cleaningFee' } as const;
+
+/** The cleaning fee in cents: the host's stored value, else the code default. */
+export async function cleaningFee(): Promise<number> {
+  const { rates } = await import('./pricing');
+  const row = await prisma.setting.findUnique({ where: { key: SETTING.CLEANING_FEE } });
+  return row?.value ?? rates.cleaningFee;
+}
+
 /** What the public calendar endpoint returns. */
 export type CalendarData = {
   from: string;
@@ -121,9 +131,10 @@ export async function quoteStay(
     return { ok: false, error: 'GUESTS' };
   }
 
-  const [taken, overrides] = await Promise.all([
+  const [taken, overrides, fee] = await Promise.all([
     unavailableDates(checkIn, checkOut),
     rateOverrides(checkIn, checkOut),
+    cleaningFee(),
   ]);
 
   const stayNights = nightsOf(checkIn, checkOut);
@@ -134,7 +145,7 @@ export async function quoteStay(
   return {
     ok: true,
     quote: {
-      ...buildQuote(stayNights, guests, overrides),
+      ...buildQuote(stayNights, guests, overrides, fee),
       checkIn: checkInISO,
       checkOut: checkOutISO,
     },
