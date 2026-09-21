@@ -5,7 +5,7 @@ import { prisma } from '@/lib/db';
 import { getDictionary } from '@/lib/i18n';
 import { BOOKING_STATUS } from '@/lib/constants';
 import { todayUTC, toISODate, addDays } from '@/lib/dates';
-import { cleaningFee } from '@/lib/availability';
+import { cleaningFee, longStayTiers } from '@/lib/availability';
 import { rates } from '@/lib/pricing';
 import AdminSignIn from '@/components/admin/AdminSignIn';
 import AdminDashboard from '@/components/admin/AdminDashboard';
@@ -41,7 +41,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
   const today = todayUTC();
   const horizon = addDays(today, 400);
 
-  const [bookings, blocked, messages, overrides, fee] = await Promise.all([
+  const [bookings, blocked, messages, overrides, fee, tiers, coupons] = await Promise.all([
     prisma.booking.findMany({
       orderBy: { checkIn: 'asc' },
       where: { OR: [{ status: BOOKING_STATUS.CONFIRMED }, { status: BOOKING_STATUS.CANCELLED }] },
@@ -57,6 +57,8 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
       orderBy: { date: 'asc' },
     }),
     cleaningFee(),
+    longStayTiers(),
+    prisma.coupon.findMany({ orderBy: { createdAt: 'desc' } }),
   ]);
 
   return (
@@ -76,6 +78,8 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
         country: b.country,
         message: b.message,
         total: b.total,
+        couponCode: b.couponCode,
+        couponDiscount: b.couponDiscount,
         refundedAmount: b.refundedAmount,
         status: b.status,
         paymentStatus: b.paymentStatus,
@@ -85,6 +89,19 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
       overrides={overrides.map((o) => ({ date: toISODate(o.date), amount: o.amount }))}
       cleaningFee={fee}
       defaultCleaningFee={rates.cleaningFee}
+      tiers={tiers}
+      coupons={coupons.map((c) => ({
+        id: c.id,
+        code: c.code,
+        type: c.type,
+        value: c.value,
+        validFrom: c.validFrom ? toISODate(c.validFrom) : null,
+        validTo: c.validTo ? toISODate(c.validTo) : null,
+        minNights: c.minNights,
+        maxUses: c.maxUses,
+        uses: c.uses,
+        active: c.active,
+      }))}
       messages={messages.map((m) => ({
         id: m.id,
         thread: m.thread,

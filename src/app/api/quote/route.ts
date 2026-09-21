@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { quoteStay } from '@/lib/availability';
+import { quoteStay, normaliseCode } from '@/lib/availability';
 import { isValidISODate } from '@/lib/dates';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'RANGE' }, { status: 400 });
   }
 
-  const { checkIn, checkOut, guests } = (body ?? {}) as Record<string, unknown>;
+  const { checkIn, checkOut, guests, coupon } = (body ?? {}) as Record<string, unknown>;
 
   if (!isValidISODate(checkIn) || !isValidISODate(checkOut)) {
     return NextResponse.json({ error: 'RANGE' }, { status: 400 });
@@ -28,9 +28,12 @@ export async function POST(request: Request) {
   }
 
   try {
-    const result = await quoteStay(checkIn, checkOut, guestCount);
+    const code = normaliseCode(coupon);
+    const result = await quoteStay(checkIn, checkOut, guestCount, code || undefined);
     if (!result.ok) return NextResponse.json({ error: result.error }, { status: 409 });
-    return NextResponse.json({ quote: result.quote });
+    // A bad code never blocks the quote: the guest sees the undiscounted
+    // price and why the code did not apply.
+    return NextResponse.json({ quote: result.quote, couponError: result.couponError ?? null });
   } catch (error) {
     console.error('[quote]', error);
     return NextResponse.json({ error: 'SERVER' }, { status: 500 });

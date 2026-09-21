@@ -19,6 +19,8 @@ export type AdminBooking = {
   country: string | null;
   message: string | null;
   total: number;
+  couponCode: string | null;
+  couponDiscount: number;
   refundedAmount: number;
   status: string;
   paymentStatus: string;
@@ -28,6 +30,21 @@ export type AdminBooking = {
 export type AdminBlocked = { date: string; reason: string | null };
 
 export type AdminOverride = { date: string; amount: number };
+
+export type AdminTier = { minNights: number; percent: number };
+
+export type AdminCoupon = {
+  id: string;
+  code: string;
+  type: string;
+  value: number;
+  validFrom: string | null;
+  validTo: string | null;
+  minNights: number | null;
+  maxUses: number | null;
+  uses: number;
+  active: boolean;
+};
 
 export type AdminMessage = {
   id: string;
@@ -42,7 +59,7 @@ export type AdminMessage = {
   createdAt: string;
 };
 
-type Tab = 'bookings' | 'calendar' | 'prices' | 'messages';
+type Tab = 'bookings' | 'calendar' | 'prices' | 'discounts' | 'messages';
 
 /**
  * The host's whole world in one page: who is coming, what the calendar looks
@@ -59,6 +76,8 @@ export default function AdminDashboard({
   overrides,
   cleaningFee,
   defaultCleaningFee,
+  tiers,
+  coupons,
 }: {
   d: Dictionary;
   locale: string;
@@ -68,6 +87,8 @@ export default function AdminDashboard({
   overrides: AdminOverride[];
   cleaningFee: number;
   defaultCleaningFee: number;
+  tiers: AdminTier[];
+  coupons: AdminCoupon[];
 }) {
   const [tab, setTab] = useState<Tab>('bookings');
   const [busy, setBusy] = useState<string | null>(null);
@@ -132,7 +153,7 @@ export default function AdminDashboard({
         </dl>
 
         <div role="tablist" className="mt-14 flex gap-8 border-b border-stone">
-          {(['bookings', 'calendar', 'prices', 'messages'] as Tab[]).map((t) => (
+          {(['bookings', 'calendar', 'prices', 'discounts', 'messages'] as Tab[]).map((t) => (
             <button
               key={t}
               role="tab"
@@ -191,6 +212,22 @@ export default function AdminDashboard({
               onSetPrice={(from, to, amount) => call('/api/admin/rates', { from, to, amount })}
               onReset={(from, to) => call('/api/admin/rates', { from, to, clear: true })}
               onSaveCleaning={(amount) => call('/api/admin/settings', { cleaningFee: amount })}
+            />
+          )}
+
+          {tab === 'discounts' && (
+            <DiscountsAdmin
+              d={d}
+              locale={locale}
+              tiers={tiers}
+              coupons={coupons}
+              busy={busy}
+              onSaveTiers={(next) => call('/api/admin/discounts', { tiers: next })}
+              onToggle={(id) => call('/api/admin/coupons', { action: 'toggle', id })}
+              onDelete={(c) =>
+                confirm(fill(d.admin.confirmDeleteCoupon, { code: c.code })) &&
+                call('/api/admin/coupons', { action: 'delete', id: c.id })
+              }
             />
           )}
 
@@ -331,6 +368,12 @@ function BookingRow({
             {b.country && <Detail label={d.booking.country} value={b.country} />}
             <Detail label={d.admin.status} value={b.status} />
             <Detail label={d.admin.payment} value={b.paymentStatus} />
+            {b.couponCode && (
+              <Detail
+                label={d.booking.coupon}
+                value={`${b.couponCode} · − ${formatMoney(b.couponDiscount, locale)}`}
+              />
+            )}
             {b.refundedAmount > 0 && (
               <Detail label={d.admin.refund} value={formatMoney(b.refundedAmount, locale)} />
             )}
@@ -1039,6 +1082,267 @@ function PricesAdmin({
               {d.admin.save}
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+/**
+ * Long-stay tiers and discount codes. Tiers are edited as a small table and
+ * saved together; codes are created one at a time and can be switched off
+ * (keeps the history) or deleted.
+ */
+function DiscountsAdmin({
+  d,
+  locale,
+  tiers,
+  coupons,
+  busy,
+  onSaveTiers,
+  onToggle,
+  onDelete,
+}: {
+  d: Dictionary;
+  locale: string;
+  tiers: AdminTier[];
+  coupons: AdminCoupon[];
+  busy: string | null;
+  onSaveTiers: (tiers: AdminTier[]) => void;
+  onToggle: (id: string) => void;
+  onDelete: (coupon: AdminCoupon) => void;
+}) {
+  const [rows, setRows] = useState(tiers.map((t) => ({ n: String(t.minNights), p: String(t.percent) })));
+  const [tierError, setTierError] = useState<string | null>(null);
+
+  const empty = { code: '', type: 'PERCENT', value: '', validFrom: '', validTo: '', minNights: '', maxUses: '' };
+  const [form, setForm] = useState(empty);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [creating, setCreating] = useState(false);
+
+  function saveTiers() {
+    const parsed: AdminTier[] = [];
+    for (const r of rows) {
+      if (!r.n.trim() && !r.p.trim()) continue;
+      const n = Number(r.n);
+      const p = Number(r.p.replace(',', '.'));
+      if (!Number.isInteger(n) || n < 2 || !Number.isInteger(p) || p < 1 || p > 90) {
+        return setTierError(d.admin.invalidAmount);
+      }
+      parsed.push({ minNights: n, percent: p });
+    }
+    onSaveTiers(parsed);
+  }
+
+  const int = (s: string) => (s.trim() ? Number(s) : null);
+
+  async function create(e: React.FormEvent) {
+    e.preventDefault();
+    setFormError(null);
+    const value =
+      form.type === 'FIXED' ? parseEuros(form.value) : /^\d+$/.test(form.value.trim()) ? Number(form.value) : null;
+    if (value === null || value <= 0 || (form.type === 'PERCENT' && value > 100)) {
+      return setFormError(d.admin.invalidAmount);
+    }
+    setCreating(true);
+    try {
+      const res = await fetch('/api/admin/coupons', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'create',
+          code: form.code,
+          type: form.type,
+          value,
+          validFrom: form.validFrom || null,
+          validTo: form.validTo || null,
+          minNights: int(form.minNights),
+          maxUses: int(form.maxUses),
+        }),
+      });
+      if (res.ok) return window.location.reload();
+      const json = await res.json().catch(() => ({}));
+      setFormError(json.error === 'CODE_TAKEN' ? d.admin.codeTaken : d.admin.invalidAmount);
+    } finally {
+      setCreating(false);
+    }
+  }
+
+  const describe = (c: AdminCoupon) =>
+    c.type === 'FIXED' ? `− ${formatMoney(c.value, locale)}` : `− ${c.value}%`;
+  const dateText = (iso: string | null) => (iso ? formatDate(toUTCDate(iso), locale) : '…');
+
+  return (
+    <div className="grid gap-14 lg:grid-cols-12">
+      {/* Codes */}
+      <div className="lg:col-span-8">
+        <h3 className="eyebrow">{d.admin.couponsTitle}</h3>
+        <p className="mt-3 max-w-prose text-[0.82rem] leading-relaxed text-muted">{d.admin.couponsHint}</p>
+
+        {coupons.length === 0 ? (
+          <p className="mt-8 text-[0.9rem] text-muted">{d.admin.noCoupons}</p>
+        ) : (
+          <ul className="mt-8 divide-y divide-stone border-y border-stone">
+            {coupons.map((c) => (
+              <li key={c.id} className="flex flex-wrap items-center gap-x-8 gap-y-2 py-4">
+                <span className={`font-mono text-[0.95rem] tracking-wide ${c.active ? 'text-charcoal' : 'text-muted line-through'}`}>
+                  {c.code}
+                </span>
+                <span className="text-[0.9rem] text-olive-deep">{describe(c)}</span>
+                <span className="text-[0.78rem] text-muted">
+                  {(c.validFrom || c.validTo) && `${dateText(c.validFrom)} → ${dateText(c.validTo)} · `}
+                  {c.minNights ? `≥ ${c.minNights} ${d.booking.nights} · ` : ''}
+                  {d.admin.uses} {c.uses}
+                  {c.maxUses ? ` / ${c.maxUses}` : ''}
+                </span>
+                <span className="ml-auto flex gap-5">
+                  <button
+                    type="button"
+                    disabled={busy !== null}
+                    onClick={() => onToggle(c.id)}
+                    className="link-rule text-[0.7rem] uppercase tracking-[0.12em] text-muted"
+                  >
+                    {c.active ? d.admin.deactivate : d.admin.activate}
+                  </button>
+                  <button
+                    type="button"
+                    disabled={busy !== null}
+                    onClick={() => onDelete(c)}
+                    className="link-rule text-[0.7rem] uppercase tracking-[0.12em] text-muted"
+                  >
+                    {d.admin.deleteCoupon}
+                  </button>
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <form onSubmit={create} className="mt-10 border border-stone bg-paper p-7">
+          <h4 className="eyebrow">{d.admin.newCoupon}</h4>
+          <div className="mt-6 grid gap-5 sm:grid-cols-3">
+            <div>
+              <label className="field-label" htmlFor="c-code">{d.admin.code}</label>
+              <input
+                id="c-code"
+                value={form.code}
+                onChange={(e) => setForm({ ...form, code: e.target.value.toUpperCase().replace(/\s/g, '') })}
+                placeholder="ESTATE10"
+                className="field font-mono uppercase"
+                required
+              />
+            </div>
+            <div>
+              <label className="field-label" htmlFor="c-type">{d.admin.discountType}</label>
+              <select
+                id="c-type"
+                value={form.type}
+                onChange={(e) => setForm({ ...form, type: e.target.value })}
+                className="field"
+              >
+                <option value="PERCENT">{d.admin.typePercent}</option>
+                <option value="FIXED">{d.admin.typeFixed}</option>
+              </select>
+            </div>
+            <div>
+              <label className="field-label" htmlFor="c-value">
+                {d.admin.discountValue} ({form.type === 'FIXED' ? '€' : '%'})
+              </label>
+              <input
+                id="c-value"
+                inputMode="decimal"
+                value={form.value}
+                onChange={(e) => setForm({ ...form, value: e.target.value })}
+                placeholder={form.type === 'FIXED' ? '30' : '10'}
+                className="field"
+                required
+              />
+            </div>
+            <div>
+              <label className="field-label" htmlFor="c-from">
+                {d.admin.validFrom} <span className="normal-case tracking-normal text-muted">({d.admin.optional})</span>
+              </label>
+              <input id="c-from" type="date" value={form.validFrom} onChange={(e) => setForm({ ...form, validFrom: e.target.value })} className="field" />
+            </div>
+            <div>
+              <label className="field-label" htmlFor="c-to">
+                {d.admin.validTo} <span className="normal-case tracking-normal text-muted">({d.admin.optional})</span>
+              </label>
+              <input id="c-to" type="date" min={form.validFrom || undefined} value={form.validTo} onChange={(e) => setForm({ ...form, validTo: e.target.value })} className="field" />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="field-label" htmlFor="c-min">{d.admin.minNightsLabel}</label>
+                <input id="c-min" inputMode="numeric" value={form.minNights} onChange={(e) => setForm({ ...form, minNights: e.target.value.replace(/\D/g, '') })} className="field" />
+              </div>
+              <div>
+                <label className="field-label" htmlFor="c-max">{d.admin.maxUsesLabel}</label>
+                <input id="c-max" inputMode="numeric" value={form.maxUses} onChange={(e) => setForm({ ...form, maxUses: e.target.value.replace(/\D/g, '') })} className="field" />
+              </div>
+            </div>
+          </div>
+          {formError && <p className="mt-5 text-[0.82rem] text-lake-deep">{formError}</p>}
+          <button type="submit" disabled={creating || busy !== null || !form.code || !form.value} className="btn-solid mt-7">
+            {d.admin.createCoupon}
+          </button>
+        </form>
+      </div>
+
+      {/* Long-stay tiers */}
+      <div className="lg:col-span-4">
+        <div className="border border-stone bg-paper p-7">
+          <h3 className="eyebrow">{d.admin.longStayTitle}</h3>
+          <p className="mt-4 text-[0.82rem] leading-relaxed text-muted">{d.admin.longStayHint}</p>
+          <div className="mt-6 grid grid-cols-[1fr_1fr_auto] items-end gap-x-4 gap-y-3">
+            <span className="field-label">{d.admin.fromNights}</span>
+            <span className="field-label">{d.admin.percentOff}</span>
+            <span />
+            {rows.map((r, i) => (
+              <div key={i} className="contents">
+                <input
+                  aria-label={d.admin.fromNights}
+                  inputMode="numeric"
+                  value={r.n}
+                  onChange={(e) => {
+                    setTierError(null);
+                    setRows(rows.map((x, j) => (j === i ? { ...x, n: e.target.value.replace(/\D/g, '') } : x)));
+                  }}
+                  className="field"
+                />
+                <input
+                  aria-label={d.admin.percentOff}
+                  inputMode="numeric"
+                  value={r.p}
+                  onChange={(e) => {
+                    setTierError(null);
+                    setRows(rows.map((x, j) => (j === i ? { ...x, p: e.target.value.replace(/\D/g, '') } : x)));
+                  }}
+                  className="field"
+                />
+                <button
+                  type="button"
+                  onClick={() => setRows(rows.filter((_, j) => j !== i))}
+                  className="pb-2 text-[1.1rem] leading-none text-muted hover:text-charcoal"
+                  aria-label={d.admin.remove}
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => setRows([...rows, { n: '', p: '' }])}
+            className="link-rule mt-5 text-[0.7rem] uppercase tracking-[0.14em] text-muted"
+          >
+            + {d.admin.addTier}
+          </button>
+          {tierError && <p className="mt-4 text-[0.82rem] text-lake-deep">{tierError}</p>}
+          <button type="button" disabled={busy !== null} onClick={saveTiers} className="btn-solid mt-7 w-full">
+            {d.admin.save}
+          </button>
         </div>
       </div>
     </div>

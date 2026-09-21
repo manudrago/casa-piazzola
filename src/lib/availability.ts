@@ -2,7 +2,7 @@ import { prisma } from './db';
 import { PENDING_HOLD_MINUTES, BOOKING_STATUS } from './constants';
 import { addDays, nightsOf, toISODate, todayUTC, toUTCDate, nightsBetween } from './dates';
 import { property } from './property';
-import { buildQuote, type Quote } from './pricing';
+import { buildQuote, type Quote, type LongStayTier, type AppliedCoupon } from './pricing';
 
 /**
  * A night is unavailable if it is inside a CONFIRMED booking, inside a PENDING
@@ -51,7 +51,50 @@ export async function rateOverrides(from: Date, to: Date): Promise<Record<string
 }
 
 /** Setting keys the host can change from /admin. */
-export const SETTING = { CLEANING_FEE: 'cleaningFee' } as const;
+export const SETTING = {
+  CLEANING_FEE: 'cleaningFee',
+  /** Set to 1 once the host has saved long-stay tiers; until then, code defaults. */
+  LONG_STAY_SAVED: 'longStaySaved',
+} as const;
+
+/** Long-stay tiers in force: the host's saved tiers, else the code defaults. */
+export async function longStayTiers(): Promise<LongStayTier[]> {
+  const { rates } = await import('./pricing');
+  const saved = await prisma.setting.findUnique({ where: { key: SETTING.LONG_STAY_SAVED } });
+  if (!saved) return rates.longStayTiers.map((t) => ({ ...t }));
+  const rows = await prisma.longStayDiscount.findMany({ orderBy: { minNights: 'asc' } });
+  return rows.map((r) => ({ minNights: r.minNights, percent: r.percent }));
+}
+
+export type CouponError = 'NOT_FOUND' | 'INACTIVE' | 'NOT_VALID_NOW' | 'MIN_NIGHTS' | 'USED_UP';
+
+/** Normalise what a guest typed: trim, upper-case, no inner spaces. */
+export function normaliseCode(input: unknown): string {
+  return typeof input === 'string' ? input.trim().toUpperCase().replace(/\s+/g, '') : '';
+}
+
+/**
+ * Look a code up and check it can be used for this stay, today. The validity
+ * window is the date of booking, both ends inclusive.
+ */
+export async function findCoupon(
+  code: string,
+  nights: number,
+): Promise<{ ok: true; coupon: AppliedCoupon } | { ok: false; error: CouponError }> {
+  const row = await prisma.coupon.findUnique({ where: { code } });
+  if (!row) return { ok: false, error: 'NOT_FOUND' };
+  if (!row.active) return { ok: false, error: 'INACTIVE' };
+  const today = todayUTC();
+  if ((row.validFrom && today < row.validFrom) || (row.validTo && today > row.validTo)) {
+    return { ok: false, error: 'NOT_VALID_NOW' };
+  }
+  if (row.minNights && nights < row.minNights) return { ok: false, error: 'MIN_NIGHTS' };
+  if (row.maxUses != null && row.uses >= row.maxUses) return { ok: false, error: 'USED_UP' };
+  return {
+    ok: true,
+    coupon: { code: row.code, type: row.type === 'FIXED' ? 'FIXED' : 'PERCENT', value: row.value },
+  };
+}
 
 /** The cleaning fee in cents: the host's stored value, else the code default. */
 export async function cleaningFee(): Promise<number> {
@@ -105,7 +148,7 @@ export async function calendar(monthsAhead = 14): Promise<CalendarData> {
 }
 
 export type QuoteResult =
-  | { ok: true; quote: Quote }
+  | { ok: true; quote: Quote; couponError?: CouponError }
   | { ok: false; error: 'PAST' | 'MIN_NIGHTS' | 'MAX_NIGHTS' | 'GUESTS' | 'UNAVAILABLE' | 'RANGE' };
 
 /**
@@ -117,6 +160,7 @@ export async function quoteStay(
   checkInISO: string,
   checkOutISO: string,
   guests: number,
+  couponCode?: string,
 ): Promise<QuoteResult> {
   const checkIn = toUTCDate(checkInISO);
   const checkOut = toUTCDate(checkOutISO);
@@ -131,10 +175,12 @@ export async function quoteStay(
     return { ok: false, error: 'GUESTS' };
   }
 
-  const [taken, overrides, fee] = await Promise.all([
+  const [taken, overrides, fee, tiers, couponLookup] = await Promise.all([
     unavailableDates(checkIn, checkOut),
     rateOverrides(checkIn, checkOut),
     cleaningFee(),
+    longStayTiers(),
+    couponCode ? findCoupon(couponCode, nights) : Promise.resolve(null),
   ]);
 
   const stayNights = nightsOf(checkIn, checkOut);
@@ -145,10 +191,15 @@ export async function quoteStay(
   return {
     ok: true,
     quote: {
-      ...buildQuote(stayNights, guests, overrides, fee),
+      ...buildQuote(stayNights, guests, overrides, {
+        cleaningFee: fee,
+        tiers,
+        coupon: couponLookup?.ok ? couponLookup.coupon : null,
+      }),
       checkIn: checkInISO,
       checkOut: checkOutISO,
     },
+    ...(couponLookup && !couponLookup.ok ? { couponError: couponLookup.error } : {}),
   };
 }
 

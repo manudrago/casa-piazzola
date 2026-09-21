@@ -40,6 +40,11 @@ export default function BookingWidget({
   const [error, setError] = useState<string | null>(null);
   const [step, setStep] = useState<Step>('dates');
   const [submitting, setSubmitting] = useState(false);
+  // What the guest has typed, and the code actually sent for pricing.
+  const [couponOpen, setCouponOpen] = useState(false);
+  const [couponInput, setCouponInput] = useState('');
+  const [coupon, setCoupon] = useState('');
+  const [couponError, setCouponError] = useState<string | null>(null);
 
   const [form, setForm] = useState({
     firstName: '',
@@ -107,13 +112,15 @@ export default function BookingWidget({
     fetch('/api/quote', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ checkIn, checkOut, guests }),
+      body: JSON.stringify({ checkIn, checkOut, guests, coupon: coupon || undefined }),
     })
       .then(async (r) => ({ ok: r.ok, json: await r.json() }))
       .then(({ ok, json }) => {
         if (cancelled) return;
         if (ok && json.quote) {
           setQuote(json.quote);
+          const ce = json.couponError as keyof typeof d.booking.couponErrors | null;
+          setCouponError(ce ? (d.booking.couponErrors[ce] ?? d.booking.errorGeneric) : null);
         } else {
           setQuote(null);
           setError(errorMessage(json.error ?? ''));
@@ -125,7 +132,7 @@ export default function BookingWidget({
     return () => {
       cancelled = true;
     };
-  }, [checkIn, checkOut, guests, d, errorMessage]);
+  }, [checkIn, checkOut, guests, coupon, d, errorMessage]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -142,6 +149,8 @@ export default function BookingWidget({
           checkOut,
           guests,
           locale,
+          // Only send a code the server has already accepted for this quote.
+          coupon: quote.couponCode ?? undefined,
           guestName: `${form.firstName.trim()} ${form.lastName.trim()}`.trim(),
           guestEmail: form.email.trim(),
           guestPhone: form.phone.trim() || null,
@@ -152,6 +161,13 @@ export default function BookingWidget({
       const json = await res.json();
       if (res.ok && json.url) {
         window.location.href = json.url;
+        return;
+      }
+      if (json.error === 'COUPON') {
+        // The code stopped working between quote and payment: re-price.
+        setCoupon('');
+        setCouponError(d.booking.couponChanged);
+        setStep('dates');
         return;
       }
       setError(json.error ? errorMessage(json.error) : d.booking.errorGeneric);
@@ -359,6 +375,13 @@ export default function BookingWidget({
                   value={formatMoney(quote.touristTax, locale)}
                   hint={d.booking.touristTaxNote}
                 />
+                {quote.couponDiscount > 0 && (
+                  <Row
+                    label={`${d.booking.coupon} ${quote.couponCode}${quote.couponLabel ? ` (${quote.couponLabel})` : ''}`}
+                    value={`− ${formatMoney(quote.couponDiscount, locale)}`}
+                    accent
+                  />
+                )}
 
                 <div className="flex items-baseline justify-between gap-4 border-t border-charcoal/25 pt-5">
                   <dt className="font-sans text-[0.66rem] uppercase tracking-[0.2em] text-charcoal">
@@ -370,6 +393,66 @@ export default function BookingWidget({
                 </div>
                 <p className="pt-1 text-[0.72rem] text-muted">{d.booking.totalNote}</p>
               </dl>
+            )}
+
+            {quote && !quoting && (
+              <div className="mt-6">
+                {quote.couponCode ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCoupon('');
+                      setCouponInput('');
+                      setCouponError(null);
+                    }}
+                    className="link-rule text-[0.7rem] uppercase tracking-[0.14em] text-muted"
+                  >
+                    {d.booking.couponRemove} {quote.couponCode}
+                  </button>
+                ) : !couponOpen ? (
+                  <button
+                    type="button"
+                    onClick={() => setCouponOpen(true)}
+                    className="link-rule text-[0.78rem] text-muted"
+                  >
+                    {d.booking.couponToggle}
+                  </button>
+                ) : (
+                  <form
+                    className="flex gap-3"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setCoupon(couponInput.trim().toUpperCase());
+                    }}
+                  >
+                    <label className="sr-only" htmlFor="coupon-code">
+                      {d.booking.coupon}
+                    </label>
+                    <input
+                      id="coupon-code"
+                      value={couponInput}
+                      onChange={(e) => {
+                        setCouponInput(e.target.value);
+                        setCouponError(null);
+                      }}
+                      placeholder={d.booking.couponPlaceholder}
+                      autoComplete="off"
+                      autoCapitalize="characters"
+                      className="field flex-1 uppercase"
+                    />
+                    <button
+                      type="submit"
+                      disabled={!couponInput.trim()}
+                      className="btn-ghost shrink-0 !px-5"
+                    >
+                      {d.booking.couponApply}
+                    </button>
+                  </form>
+                )}
+                {couponError && (
+                  <p className="mt-3 text-[0.82rem] leading-relaxed text-lake-deep">{couponError}</p>
+                )}
+              </div>
             )}
           </div>
 

@@ -48,6 +48,10 @@ model Booking {
   /// UNPAID | PAID | REFUNDED | PARTIALLY_REFUNDED
   paymentStatus String @default("UNPAID")
 
+  /// Discount code used, if any, and what it took off the total (cents).
+  couponCode     String?
+  couponDiscount Int     @default(0)
+
   stripeSessionId       String? @unique
   stripePaymentIntentId String?
   refundedAmount        Int     @default(0)
@@ -91,6 +95,33 @@ model Setting {
   value Int
 
   updatedAt DateTime @updatedAt
+}
+
+/// Long-stay discount tiers: stays of at least `minNights` get `percent` off
+/// the nightly rates. Only the highest matching tier applies. Until the host
+/// saves tiers from /admin, the defaults in src/lib/pricing.ts are used.
+model LongStayDiscount {
+  minNights Int @id
+  percent   Int
+}
+
+/// Discount codes. PERCENT takes `value` % off the total; FIXED takes `value`
+/// cents off. Stacks on top of any long-stay discount.
+model Coupon {
+  id        String    @id @default(cuid())
+  code      String    @unique // stored upper-case
+  /// PERCENT | FIXED
+  type      String
+  value     Int
+  /// Window in which the code can be used (date of booking, inclusive).
+  validFrom DateTime?
+  validTo   DateTime?
+  minNights Int?
+  maxUses   Int?
+  uses      Int       @default(0)
+  active    Boolean   @default(true)
+
+  createdAt DateTime @default(now())
 }
 
 /// Guest ↔ host correspondence. A thread is keyed by email so pre-booking

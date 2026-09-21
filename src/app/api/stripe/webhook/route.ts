@@ -128,6 +128,13 @@ async function confirmBooking(session: Stripe.Checkout.Session) {
     },
   });
 
+  // Count the code as used only once the stay is actually paid for.
+  if (confirmed.couponCode) {
+    await prisma.coupon
+      .update({ where: { code: confirmed.couponCode }, data: { uses: { increment: 1 } } })
+      .catch((error) => console.error('[webhook] coupon count', error));
+  }
+
   // If the guest left a note at booking, seed the message thread with it so
   // the host has one place to answer from.
   if (confirmed.message) {

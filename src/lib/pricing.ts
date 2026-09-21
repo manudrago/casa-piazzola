@@ -49,12 +49,23 @@ export const rates = {
   /** Age below which guests are exempt. Verify. */
   touristTaxExemptUnder: 14,
 
-  /** Stays of this length or longer get a discount. */
-  weeklyDiscountFrom: 7,
-  weeklyDiscountPct: 8,
-  monthlyDiscountFrom: 28,
-  monthlyDiscountPct: 20,
+  /**
+   * Default long-stay tiers — used until the host saves their own from /admin
+   * (LongStayDiscount table). Highest matching tier wins.
+   */
+  longStayTiers: [
+    { minNights: 7, percent: 8 },
+    { minNights: 28, percent: 20 },
+  ],
 } as const;
+
+export type LongStayTier = { minNights: number; percent: number };
+
+/** A validated coupon, as the pricing engine needs it. */
+export type AppliedCoupon = { code: string; type: 'PERCENT' | 'FIXED'; value: number };
+
+/** Stripe will not take a charge below €0.50, so a coupon never goes further. */
+const MIN_CHARGE = 50;
 
 export type NightRate = { date: string; amount: number };
 
@@ -72,6 +83,10 @@ export type Quote = {
   accommodation: number;
   cleaningFee: number;
   touristTax: number;
+  /** Discount code applied, and the amount it took off the total. */
+  couponCode: string | null;
+  couponLabel: string | null;
+  couponDiscount: number;
   total: number;
   averageNightly: number;
   currency: string;
@@ -109,8 +124,14 @@ export function buildQuote(
   nights: Date[],
   guests: number,
   overrides: Record<string, number> = {},
-  cleaningFeeCents: number = rates.cleaningFee,
+  options: {
+    cleaningFee?: number;
+    tiers?: readonly LongStayTier[];
+    coupon?: AppliedCoupon | null;
+  } = {},
 ): Omit<Quote, 'checkIn' | 'checkOut'> {
+  const cleaningFeeCents = options.cleaningFee ?? rates.cleaningFee;
+  const tiers = options.tiers ?? rates.longStayTiers;
   const nightly: NightRate[] = nights.map((d) => ({
     date: toISODate(d),
     amount: nightlyRate(d, overrides),
@@ -120,18 +141,34 @@ export function buildQuote(
 
   let discount = 0;
   let discountLabel: string | null = null;
-  if (nights.length >= rates.monthlyDiscountFrom) {
-    discount = Math.round((accommodationGross * rates.monthlyDiscountPct) / 100);
-    discountLabel = `${rates.monthlyDiscountPct}%`;
-  } else if (nights.length >= rates.weeklyDiscountFrom) {
-    discount = Math.round((accommodationGross * rates.weeklyDiscountPct) / 100);
-    discountLabel = `${rates.weeklyDiscountPct}%`;
+  const tier = [...tiers]
+    .filter((t) => nights.length >= t.minNights && t.percent > 0)
+    .sort((a, b) => b.minNights - a.minNights)[0];
+  if (tier) {
+    discount = Math.round((accommodationGross * tier.percent) / 100);
+    discountLabel = `${tier.percent}%`;
   }
 
   const accommodation = accommodationGross - discount;
   const taxedNights = Math.min(nights.length, rates.touristTaxMaxNights);
   const touristTax = rates.touristTaxPerPersonPerNight * guests * taxedNights;
   const cleaningFee = cleaningFeeCents;
+
+  // The coupon comes off the whole bill, after the long-stay discount — the
+  // two stack. The tourist tax owed to the Comune is unchanged; the discount
+  // on it is the host's, not the Comune's.
+  const subtotal = accommodation + cleaningFee + touristTax;
+  let couponDiscount = 0;
+  let couponLabel: string | null = null;
+  const coupon = options.coupon ?? null;
+  if (coupon) {
+    couponDiscount =
+      coupon.type === 'PERCENT'
+        ? Math.round((subtotal * Math.min(coupon.value, 100)) / 100)
+        : coupon.value;
+    couponDiscount = Math.max(0, Math.min(couponDiscount, subtotal - MIN_CHARGE));
+    couponLabel = coupon.type === 'PERCENT' ? `${coupon.value}%` : null;
+  }
 
   return {
     nights: nights.length,
@@ -143,7 +180,10 @@ export function buildQuote(
     accommodation,
     cleaningFee,
     touristTax,
-    total: accommodation + cleaningFee + touristTax,
+    couponCode: coupon && couponDiscount > 0 ? coupon.code : null,
+    couponLabel: coupon && couponDiscount > 0 ? couponLabel : null,
+    couponDiscount,
+    total: subtotal - couponDiscount,
     averageNightly: nights.length ? Math.round(accommodation / nights.length) : 0,
     currency: CURRENCY,
   };

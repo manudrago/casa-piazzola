@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { getStripe, stripeConfigured } from '@/lib/stripe';
-import { quoteStay, bookingReference } from '@/lib/availability';
+import { quoteStay, bookingReference, normaliseCode } from '@/lib/availability';
+import { formatMoney } from '@/lib/pricing';
 import { isValidISODate, toUTCDate, formatLongDate } from '@/lib/dates';
 import { BOOKING_STATUS, PAYMENT_STATUS, SITE_URL } from '@/lib/constants';
 import { getDictionary, href, isLocale, defaultLocale } from '@/lib/i18n';
@@ -55,8 +56,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'EMAIL' }, { status: 400 });
   }
 
-  const priced = await quoteStay(checkIn, checkOut, guests);
+  const couponCode = normaliseCode(body.coupon);
+  const priced = await quoteStay(checkIn, checkOut, guests, couponCode || undefined);
   if (!priced.ok) return NextResponse.json({ error: priced.error }, { status: 409 });
+  // The guest was shown a discounted price. If the code stopped working in
+  // between (used up, switched off), stop rather than charge a different sum.
+  if (couponCode && priced.couponError) {
+    return NextResponse.json({ error: 'COUPON', couponError: priced.couponError }, { status: 409 });
+  }
   const quote = priced.quote;
 
   const d = getDictionary(locale);
@@ -78,6 +85,8 @@ export async function POST(request: Request) {
       accommodation: quote.accommodation,
       cleaningFee: quote.cleaningFee,
       touristTax: quote.touristTax,
+      couponCode: quote.couponCode,
+      couponDiscount: quote.couponDiscount,
       total: quote.total,
       status: BOOKING_STATUS.PENDING,
       paymentStatus: PAYMENT_STATUS.UNPAID,
@@ -98,7 +107,32 @@ export async function POST(request: Request) {
       customer_email: guestEmail,
       client_reference_id: reference,
       locale: locale === 'it' ? 'it' : 'en',
-      line_items: [
+      // Stripe has no negative line items. Without a coupon each part of the
+      // bill is its own line; with one, the stay is a single line for the
+      // discounted total, itemised in its description.
+      line_items: quote.couponDiscount > 0
+        ? [
+            {
+              quantity: 1,
+              price_data: {
+                currency: quote.currency,
+                unit_amount: quote.total,
+                product_data: {
+                  name: `${property.name} — ${quote.nights} ${
+                    quote.nights === 1 ? d.booking.night : d.booking.nights
+                  }`,
+                  description: [
+                    stayLabel,
+                    `${quote.nights} ${quote.nights === 1 ? d.booking.night : d.booking.nights}: ${formatMoney(quote.accommodation, locale)}`,
+                    `${d.booking.cleaningFee}: ${formatMoney(quote.cleaningFee, locale)}`,
+                    ...(quote.touristTax > 0 ? [`${d.booking.touristTax}: ${formatMoney(quote.touristTax, locale)}`] : []),
+                    `${d.booking.coupon} ${quote.couponCode}: − ${formatMoney(quote.couponDiscount, locale)}`,
+                  ].join(' · '),
+                },
+              },
+            },
+          ]
+        : [
         {
           quantity: 1,
           price_data: {
@@ -139,6 +173,7 @@ export async function POST(request: Request) {
           : []),
       ],
       metadata: {
+        ...(quote.couponCode ? { coupon: quote.couponCode } : {}),
         reference,
         bookingId: booking.id,
         checkIn,
