@@ -30,7 +30,7 @@ export default function StaySection({ locale, d }: { locale: string; d: Dictiona
         <Reveal className="lg:col-span-6">
           <Parallax speed={0.1} className="relative h-[62vh] min-h-[420px] lg:h-[86vh]">
             <Photo
-              img={image('stay-hero')}
+              img={image('gallery-tower')}
               locale={locale}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
